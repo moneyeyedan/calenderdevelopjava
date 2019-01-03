@@ -40,10 +40,8 @@ public class calander {
         int lasttwodigit=year%100;
         int leapcount=0;
         int monthend[];
-	int code=0;
         if(year%4==0 && year%100!=0 || year%100==0 && year%400==0){
             monthend=new int[]{31,29,31,30,31,30,31,30,31,30,31,30};
-	    code=1;
         }else{
              monthend=new int[]{31,28,31,30,31,30,31,30,31,30,31,30};
         }
@@ -58,21 +56,21 @@ public class calander {
         }
         for(int k=jj;k<limit;k++){
               int total=0;
-              if(code==1){
+              if(year%4==0 && year%100!=0 || year%100==0 && year%400==0){
                   total=(monthcode[k]+yearcode[centure]+leapcount+lasttwodigit)%7;
               }else{
                   total=(monthcode[k]+yearcode[centure]+leapcount+1+lasttwodigit)%7;
               }
               System.out.println(monthname[k]);
-              System.out.println("SUN\tMON\tTUE\tWED\tTHES\tFRI\tSAT");
+              System.out.println("SUN MON TUE WED THES FRI SAT");
               int count=0;
               for(int i=0;i<monthend[k];i++){
 
                   for(int j=0;j<total;j++){
-                      System.out.print("\t");
+                      System.out.print("     ");
                       count=count+1;
                   }
-                  System.out.print(i+1+"\t");
+                  System.out.print(i+1+"   ");
                   count=count+1;
                   if(count==7){
                       count=0;
