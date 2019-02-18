@@ -1,0 +1,382 @@
+<div class="bg-img">
+  <div class="container-fluid">
+
+    <div class="col-md-6 col-sm-6">
+      <a routerLink="/home" ><img src="../../../assets/images/Logo.png" class="logo-img" height="60" width="217"/></a>
+      <div class="white heading padtop text-center" *ngIf="status">
+        Join our community.
+      </div>
+      <div class="white heading padtop text-center" *ngIf="!status">
+        Join our community.
+      </div>
+      <div class="white text-center para01" *ngIf="status">
+        Sign up to become an independent<br> support worker via the Care u choose platform.
+      </div>
+      <div class="white text-center para01" *ngIf="!status">
+        Signing up is free. Over 3100 support <br>workers to contact and hire.
+      </div>
+      <div class="row radio">
+        <div class="col-md-10 col-md-offset-1 goodbg">
+          <div class="looking white ">
+            I am looking to
+          </div>
+          <form>
+            <div class="radio cus-radio1">
+              <label class="container">Find a
+                care or Support worker
+                <input type="radio" checked="checked" name="radio" value="CLIENT"
+                       (change)="onItemChange('CLIENT')" [(ngModel)]="radioValue">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="radio cus-radio1">
+              <label class="container">Become a care or Support worker
+                <input type="radio"  name="radio" value="CAREWORKER" (change)="onItemChange('CAREWORKER')"
+                       [(ngModel)]="radioValue">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6 col-sm-6">
+      <div class="box">
+        <div class="form-heading">
+          Sign up to Get started
+        </div>
+        <br>
+        <form #registerForm="ngForm">
+          <!--(ngSu bmit)="register(registerForm)">-->
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group heightcl">
+                <label for="firstname" class="lbcol">First Name</label>
+                <input type="text" name="first" id="firstname" class="form-control newinp" [(ngModel)]="firstName"
+                       placeholder="First Name"
+                       #firstname="ngModel"
+                       maxlength="30" ngModel required autofocus>
+                <app-error [control]="firstname"></app-error>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group heightcl">
+                <label for="lastname" class="lbcol">Last Name</label>
+                <input type="text" name="last" id="lastname" class="form-control newinp" [(ngModel)]="lastName"
+                       placeholder="Last Name"
+                       #lastname="ngModel"
+
+                       maxlength="30" ngModel required>
+                <app-error [control]="lastname"></app-error>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6 ">
+              <div class="form-group heightcl">
+                <label for="email" class="lbcol">Email</label>
+                <input type="email" id="email" name="email" class="form-control newinp" [(ngModel)]="email"
+                       placeholder="Email"
+                       #Email="ngModel" ngModel
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"
+                       required>
+                <app-error [control]="Email"></app-error>
+                <div *ngIf="mail_error" style="color: red">Email already exist</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group heightcl">
+                <label for="password" class="lbcol">Password</label>
+                <input type="password" id="password" name="Password" class="form-control newinp" placeholder="Password"
+                       [(ngModel)]="Password" #password="ngModel" ngModel
+                       pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <div *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
+                  <div [hidden]="!password.errors.required">
+                    Password is required!
+                  </div>
+                  <div [hidden]="!password.errors.pattern" class="errormsg">
+                    Must contain at least one number, one uppercase, one lowercase letter or a special character
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group heightcl">
+                <label for="phone" class="lbcol">Phone</label>
+                <input type="text" name="num" id="phone" class="form-control newinp" [(ngModel)]="contactNo"
+                       placeholder="contact Number"
+                       #num="ngModel"
+                       minlength="11"
+                       maxlength="11" (keypress)="numberOnly($event)" ngModel required>
+                <app-error [control]="num"></app-error>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group heightcl">
+                <label for="postcode" class="lbcol">Postcode</label>
+                <input type="text" name="post" id="amount" maxlength="4" autocomplete="off" class="form-control newinp" [(ngModel)]="postcode"
+                       placeholder="Post Code"
+                       #post="ngModel"
+                       (keypress)="numberOnly($event)" ngModel required>
+                <!--<app-error [control]="post"></app-error>-->
+                <span class="paymentalert text-danger"></span>
+
+              </div>
+            </div>
+          </div>
+          <div class="radio">
+            <p>Gender</p>
+            <div class="row">
+              <div class="col-md-4">
+                <label class="container">Any gender
+                  <input type="radio" id="test" value="any" name="radio-group" (change)="radioevent($event)"
+                         [(ngModel)]="gender"
+                         checked style="padding-right: 2px">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-md-3">
+                <label class="container">Male
+                  <input type="radio" id="test1" value="male" name="radio-group" [(ngModel)]="gender"
+                         (change)="radioevent($event)">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-md-3">
+                <label class="container">Female
+                  <input type="radio" id="test2" value="Female" name="radio-group" (change)="radioevent($event)"
+                         [(ngModel)]="gender">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </div>
+          <hr class="hr007">
+          <div class="row" *ngIf="status">
+            <div class="col-md-6">
+              <label class="lbcol">Have you worked in support work, Nursing or allied health before?</label><br>
+              <div class="form-group">
+                <div class="btn-group " id="status" data-toggle="buttons">
+                  <label class="btn btn-default btn-on btn-lg newpad active outl bgc" (click)="experience = true">
+                    <input type="radio" value="1" name="multifeatured_module[module_id][status]" class="hbt">Yes</label>
+                  <label class="btn btn-default btn-off btn-lg newpad outl bgc" (click)="experience = false ">
+                    <input type="radio" value="0" name="multifeatured_module[module_id][status]" class="hbt">No</label>
+                </div>
+              </div>
+              <!--<div class="form-group">
+                 <label for="sel1">Have you worked in support work, nursing or allied health before?</label>
+                 <button class="but" (click)="experience = true">YES</button><button (click)="experience = false " class="but1">NO</button>
+              </div>-->
+            </div>
+            <div class="col-md-6">
+              <label class="lbcol">Are you bringing existing clients to the platform with</label><br>
+              <div class="form-group ">
+                <div class="btn-group " id="status" data-toggle="buttons">
+                  <label class="btn btn-default btn-on btn-lg newpad active outl" (click)="existingclient = true">
+                    <input type="radio" value="1" name="multifeatured_module[module_id][status]">Yes</label>
+                  <label class="btn btn-default btn-off btn-lg newpad outl" (click)="existingclient = false ">
+                    <input type="radio" value="0" name="multifeatured_module[module_id][status]">No</label>
+                </div>
+              </div>
+              <!--<div class="form-group">
+                 <label for="sel1">Are you bringing existing clients to the platform with</label>
+                 <button class="but" (click)="existingclient = true">YES</button><button (click)="existingclient = false " class="but1">NO</button>
+              </div>-->
+            </div>
+          </div>
+          <div class="row" *ngIf="status">
+            <div class="col-md-6">
+              <div class="form-group heightcl">
+                <label for="sel1" class="lbcol">Working hours contribution?<br></label>
+                <select class="form-control newinp" id="sel1" name="contribution_hours" [(ngModel)]="contribution_hours"
+                        required>
+                  <option value="" disabled="true" [selected]="!contribution_hours">Please choose</option>
+                  <option value="1-10 hours p/w">1-10 hours p/w</option>
+                  <option value="11-25 hours">11-25 hours</option>
+                  <option value="26-35 hours">26-35 hours</option>
+                  <option value="36+">36+</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group heightcl">
+                <label for="sel1" class="lbcol">How did u hear about us?</label>
+                <select class="form-control newinp" id="sel1"  name="found_us" [(ngModel)]="found_us" ngModel required>
+                  <option value="" disabled="true" [selected]="!found_us">Please choose</option>
+                  <option value="Google">Google</option>
+                  <option value="Social Media">Social Media</option>
+                  <option value="Radio advertisement">Radio advertisement</option>
+                  <option value="News article">News article</option>
+                  <option value="Word of mouth (specify)">Word of mouth (specify)</option>
+                  <option value="Event">Event</option>
+                  <option value="Flyer">Flyer</option>
+                  <option value="Jobs website (specify)">Jobs website (specify)</option>
+                  <option value="University or RTO">University or RTO</option>
+                  <option value="Case Manager">Case Manager</option>
+                  <option value="Hospital Staff">Hospital Staff</option>
+                  <option value="Television">Television</option>
+                  <option value="Out of Home Advertising">Out of Home Advertising</option>
+                  <option value="Other (specify)">Other (specify)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="!status">
+            <div class="col-md-6">
+              <div class="form-group heightcl">
+                <label for="sel1" class="lbcol">How did u hear about us?</label>
+                <select class="form-control newinp" [(ngModel)]="found_us" id="sel1" name="found_us" required>
+                  <option value="" disabled="true" [selected]="!found_us">Please choose</option>
+                  <option value="Google">Google</option>
+                  <option value="Social Media">Social Media</option>
+                  <option value="Radio advertisement">Radio advertisement</option>
+                  <option value="News article">News article</option>
+                  <option value="Word of mouth (specify)">Word of mouth (specify)</option>
+                  <option value="Event">Event</option>
+                  <option value="Flyer">Flyer</option>
+                  <option value="Jobs website (specify)">Jobs website (specify)</option>
+                  <option value="University or RTO">University or RTO</option>
+                  <option value="Case Manager">Case Manager</option>
+                  <option value="Hospital Staff">Hospital Staff</option>
+                  <option value="Television">Television</option>
+                  <option value="Out of Home Advertising">Out of Home Advertising</option>
+                  <option value="Other (specify)">Other (specify)</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group heightcl">
+                <label for="sel2" class="lbcol">What type of care is needed?</label>
+                <select class="form-control newinp" id="sel2" name="caretype" [(ngModel)]="caretype" required>
+
+                  <option value="" disabled="true" [selected]="!caretype">Please choose</option>
+                  <option value="Disability Support">Disability Support</option>
+                  <option value="Aged Care">Aged Care</option>
+                  <option value="Mental Health">Mental Health</option>
+                  <option value="Post-surgery">Post-surgery</option>
+                  <option value="Other (specify)">Other (specify)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="!status">
+            <div class="col-md-6">
+              <label class="lbcol">Do you currently receive support from a support worker?</label><br>
+              <div class="form-group">
+                <div class="btn-group " id="status" data-toggle="buttons">
+                  <label class="btn btn-default btn-on btn-lg newpad active outl" (click)="recivesupport = true">
+                    <input type="radio" value="1" name="multifeatured_module[module_id][status]">Yes</label>
+                  <label class="btn btn-default btn-off btn-lg newpad outl" (click)="recivesupport = false">
+                    <input type="radio" value="0" name="multifeatured_module[module_id][status]">No</label>
+                </div>
+              </div>
+              <!--<div class="form-group">
+                 <label for="sel1">Do you currently receive support from a support worker?</label>
+                 <button type="radio" class="but" (click)="recivesupport = true">YES</button><button type="radio" (click)="recivesupport = false " class="but1">NO</button>
+              </div>-->
+            </div>
+            <div class="col-md-6">
+              <div class="form-group heightcl">
+                <label for="sel3" class="lbcol">How many hours of support do you feel you require?</label>
+                <select class="form-control newinp" id="sel3" name="workhours" [(ngModel)]="workhours" required>
+                  <option value="" disabled="true" [selected]="!workhours">Please choose</option>
+                  <option value="Less then 5">Less then 5</option>
+                  <option value="6 to 10">6 to 10</option>
+                  <option value="11 to 15">11 to 15</option>
+                  <option value="More then 15">More then 15</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="!status">
+            <div class="col-md-12">
+              <div class="form-group heightcl">
+                <label for="sel4" class="lbcol">What is the primary method of funding for your support need?</label>
+                <select class="form-control newinp" id="sel4" name="primaryfunding" [(ngModel)]="primaryfunding"
+                        required>
+                  <option value="" disabled="true" [selected]="!primaryfunding">Please choose</option>
+                  <option value=" Privately Paying"> Privately Paying</option>
+                  <option value="NDIS Funding">NDIS Funding</option>
+                  <option value="Home Care Package">Home Care Package</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row check">
+            <div class="col-md-12">
+              <label class="container lbcol">Accept the terms & conditions and the privacy policy.
+                <input type="checkbox" name="accept" ngModel required>
+                <span class="checkmark borin"></span>
+              </label>
+            </div>
+          </div>
+          <!--<div class="row">-->
+          <!--<div class="col-md-12 col-sm-12  col-xs-12">-->
+          <!--<label class="container">24 Hour/Overnight-->
+          <!--<input type="checkbox" [checked]="Availability.avail_weekday" id="yourBox" (change)="Availability.avail_weekday = !Availability.avail_weekday" (click)="Availability.avail_weekday_hourly_rate = 0" />-->
+          <!--<span class="checkmark"></span>-->
+          <!--</label>-->
+          <!--<div class="checkbox text-left">-->
+          <!--<label class="checkfont"><input type="checkbox">Accept the terms & conditions and the privacy policy</label>-->
+          <!--</div>-->
+
+                 <!--</div>-->
+              <!--</div>-->
+              <div class="row">
+                 <div class="col-md-6 col-sm-6  col-xs-6 valigntext">
+                   <span class="valigntext1">Have an Account Already?<a routerLink="/login" class="loginclss blue"> Login</a></span>
+                    <!--<button class="btn1" >Login</button>-->
+                 </div>
+                <div class="col-md-6 col-sm-6  col-xs-6 text-right">
+                  <button class="btn btn-primary" type="submit" id="btn1"
+                          [disabled]="!registerForm.form.valid"
+                          (click)="register(registerForm)" onclick="setTimeout(disableFunction, 1);">Signup</button>
+                </div>
+              </div>
+           </form>
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-md-12">
+           <div class="ldiv">
+              <ul>
+                 <li><a href="" class="white padd">FAQ's<span class="extra white">|</span></a></li>
+                 <li><a href="" class="white padd">POLICY<span class="extra white">|</span></a></li>
+                 <li><a href="" class="white padd">TERMS OF USE</a></li>
+              </ul>
+              <p class="white paral">@2019 CareUchoose Technologies pvt ltd. All rights reserved.</p>
+             <!--<label> Enter your favorite movies:<br/>-->
+               <!--<div class="datalist-wrap">-->
+                 <!--<div class="input-wrap">-->
+                   <!--<input id="movietxt" type="text" name="movies" list="movies"/>-->
+                   <!--<button id="caret"> &#9660;</button>-->
+                 <!--</div>-->
+                 <!--<datalist id="movies">-->
+
+                   <!--<label> or select one from the list:-->
+                     <!--<select name="movies" id="select">-->
+                       <!--<option value="Star Wars">-->
+                       <!--<option value="The Godfather">-->
+                       <!--<option value="Goodfellas">-->
+                     <!--</select>-->
+                   <!--</label>-->
+
+                 <!--</datalist>-->
+               <!--</div>-->
+             <!--</label>-->
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="spinnerouter" *ngIf="spinner">
+  <!--<h1 class="text-center">
+    <i class="fa fa-circle-o-notch fa-spin xtra"></i>
+  </h1>-->
+  <div class="spinner"></div>
+</div>

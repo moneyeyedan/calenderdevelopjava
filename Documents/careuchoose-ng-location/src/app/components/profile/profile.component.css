@@ -1,0 +1,370 @@
+.icon-star p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon-star p i {
+  font-size: 19px !important;
+  color: #fac917;
+  /* float: left; */
+  /* margin: 6px; */
+  margin-top: 3px;
+  display: inline-flex;
+}
+
+.bt1:hover {
+  background-color: #3f86ed !important;
+  color: #fff !important;
+}
+
+.marg {
+  margin-left: 5% !important;
+}
+
+.fontf {
+  font-size: 10px;
+}
+
+.btn-primary.danger {
+  background: #ff0000;
+  border-color: #ff0000;
+}
+
+.profile {
+  margin: 2%;
+}
+
+.map iframe {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.blue {
+  color: #3f86ed;
+}
+
+.box {
+  border: 1px solid #3f86ed;
+  padding: 7px 14px;
+  color: white;
+  background: #3f86ed;
+  /*box-shadow: 0 0 5px 0px #03A9F4;*/
+}
+
+.ad .col-md-4 {
+  padding: 0;
+}
+
+.clr1 {
+  background: #3f86ed;
+}
+
+.clr2 {
+  background: #3f96ff;
+}
+
+.clr3 {
+  background: #2482f2;
+}
+
+h4 span {
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.box h4 {
+  text-align: right;
+  margin-top: 25px;
+  font-weight: 700;
+}
+
+.box p {
+  font-size: 12px;
+}
+
+.gray {
+  color: #a3cbe8;
+}
+
+.date {
+  background: #f3f2f2;
+  padding: 8px;
+  color: #98c1de;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.date .col-md-1 {
+  width: 12%;
+}
+
+.vl {
+  border-left: 1px solid #eee;
+  height: 350px;
+}
+
+.lines .row {
+  margin-bottom: 10px;
+}
+
+hr.left, hr.right {
+  margin-bottom: 4px;
+  margin-top: 7px;
+}
+
+/*.card-content p{
+text-align: left;
+}*/
+.color {
+  color: #ccc;
+}
+
+.underline.blue {
+  border: 2px solid #3f86ed;
+  width: 100%;
+}
+
+.underline.red {
+  border: 2px solid #b92200;
+  width: 100%;
+}
+
+.underline.yello {
+  border: 2px solid #FFC107;
+  width: 100%;
+}
+
+.user h3 {
+  font-weight: 600;
+}
+
+/*hr{
+border-top: 2px solid #ccc;
+}*/
+#badge {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  background: #3f86ed;
+  font-size: 15px;
+}
+
+.cross:before {
+  top: 2px;
+  content: '';
+  border-left: 2px solid #3edaf3;
+  padding: 4px;
+  position: absolute;
+  height: 20px;
+  margin-left: 39px;
+}
+
+.col-md-1.blue:after {
+  top: 8px;
+  content: '';
+  border-bottom: 1px solid #9fb3ec;
+  padding: 4px;
+  position: absolute;
+  height: 20px;
+  width: 80%;
+  margin-left: -36px;
+}
+
+.social img {
+  max-width: 30px;
+}
+
+.pro_user .padd {
+  padding: 0px 21px;
+}
+
+.wid {
+  max-width: 500px;
+  margin: auto;
+}
+
+/*
+form.max-wid {
+  max-width: 660px;
+  margin: 4% auto;
+}
+*/
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.btn-default.btn-on.active {
+  background-color: #3f86ed;
+  color: white;
+}
+
+.btn-default.btn-off.active {
+  background-color: #3f86ed;
+  color: white;
+}
+
+.btn-lg {
+  font-size: 14px;
+}
+
+/*file upload*/
+.upload .hide {
+  display: none;
+}
+
+.upload .btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.upload .btn {
+  border-color: #0f67d4;
+  background: #0f67d4;
+  color: white;
+}
+
+.upload .btn-large {
+  padding: 0px 4px;
+  font-size: 13.5px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.padd {
+  padding: 6px 16px;
+}
+.d-flex{
+  display: inline-flex;
+}
+
+
+
+
+.nav-tabs { border-bottom: 2px solid #DDD; }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+.nav-tabs > li > a { border: none; color: #666; }
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+.nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
+.tab-content p{
+  max-width: 700px;
+}
+.nav-tabs li{
+  width: 30%;
+  text-align: center;
+}
+.max{
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.avatar-box img {
+  border-radius: 3px;
+  border: dashed 2px #e2e2e2;
+  text-align: center;
+  position: relative;
+  padding: 7px;
+}
+
+
+.radio .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.reducemargin {
+  margin-left: -9px !important;
+}
+
+/* Create a custom radio button */
+.radio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio .container input:checked ~ .checkmark {
+  background-color: #3f86ed;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio .container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+
+.mapframe {
+  height: 335px;
+}
+.ellipsis{
+  text-overflow: ellipsis;
+  width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+agm-map {
+  height: 450px;
+  width: 400px;
+}

@@ -1,0 +1,42 @@
+.custom-row {
+  padding: 2%;
+}
+
+/*client_tab*/
+
+.my_client_box {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.client_img {
+  width: 50px;
+}
+
+.client_anchor {
+  background-color:#123456;
+}
+
+.client_anchor :hover {
+  background-color: #bbdefb;
+  border-radius:5px;
+  transition: 0.3s;
+}
+
+.client_row {
+  padding: 1%;
+  color: #333;
+}
+
+.client_fa_icon {
+  color: #ccc !important;
+}
+
+.client_fa_icon :hover {
+  color: #333;
+}
+
+.client_heading {
+  font-size: 2rem;
+
+}

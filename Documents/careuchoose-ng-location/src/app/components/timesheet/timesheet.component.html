@@ -1,0 +1,292 @@
+<app-header></app-header>
+<div class="timesheet content">
+  <div class="row">
+    <div class="col-md-3">
+      <app-personal-info></app-personal-info>
+    </div>
+    <div class="col-md-9 col-sm-12 col-xs-12">
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Timesheet
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div *ngIf="profile_type === 'CAREWORKER'" class="text-right">
+              <button class="btn btn-primary marg" data-toggle="modal" data-target="#myModal1">Add</button>
+              <!--<i
+              class="fa fa-times" aria-hidden="true"></i>-->
+            </div>
+          </div>
+          <div class="modal fade " id="myModal1" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content padbox">
+                <div class="modal-header hidebr">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Add</h4>
+                  <hr class="border-bottom">
+                </div>
+                <form #jobform="ngForm">
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group ">
+                          <label><h5>Choose your client</h5></label>
+                          <ng-multiselect-dropdown
+                            [placeholder]="'Select Client '"
+                            [data]="datas"
+                            [(ngModel)]="selectedItems"
+                            [settings]="dropdownSettings"
+                            (onSelect)="onItemSelect($event)"
+                            (onDeSelect)="onItemDeSelect($event)" name="dorpdown">
+                          </ng-multiselect-dropdown>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div><h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>Add the day you worked</h5></div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="usr">Start date & time</label>
+                        <div class="form-group has-success">
+                          <!-- <input type="date" class="form-control" name="date1" [(ngModel)]="educationHistory.course_start_date"
+                                  max="1979-12-31">-->
+                          <input [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12"
+                                 [(ngModel)]="start_time"
+                                 [selectMode]="'rangeFrom'" class="form-control" name="start_time">
+                          <owl-date-time [pickerMode]="'dialog'" [hour12Timer]="true" #dt12></owl-date-time>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="usr">End date & time</label>
+                        <div class="form-group has-success">
+                          <input [owlDateTimeTrigger]="dt10" [owlDateTime]="dt10"
+                                 [(ngModel)]="start_time"
+                                 [selectMode]="'rangeTo'" class="form-control" name="start_time">
+                          <owl-date-time [pickerMode]="'dialog'" [hour12Timer]="true" #dt10></owl-date-time>
+                          <!--<input type="date" class="form-control" name="date2" [(ngModel)]="educationHistory.course_end_date">-->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label for="sel3"><h5>Choose the rate</h5></label>
+                          <!--<input type="text"  id="sel3" class="form-control borcolor" placeholder="Choose the rate" [(ngModel)]="net_rate" name="net_rate"  ngModel required>-->
+                          <select class="form-control newinp" id="sel3" name="net_rate" [(ngModel)]="net_rate" ngModel
+                                  required>
+                            <option value="" disabled="true" [selected]="!net_rate">Please choose</option>
+                            <option value="{{weekdays}}">Weekdays - {{weekdays}}/h</option>
+                            <option [ngValue]="weekend">Weekends - {{weekend}}/h</option>
+                            <option [ngValue]="a_24h">24Hours/Overnight - {{a_24h}}/h</option>
+                          </select>
+                          <!--<select class="form-control borcolor" >
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                          </select>-->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label><h5>Add your shift notes<sup>*</sup></h5></label>
+                        <textarea type="text" class="form-control borcolor" placeholder="Type something"
+                                  [(ngModel)]="shift_notes" name="shift_notes" ngModel required></textarea>
+                      </div>
+                      <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+                         <label><h5>Incidents</h5></label>
+                         <textarea type="text" class="form-control borcolor" placeholder="Type something"></textarea>
+                       </div>-->
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <a href="#demo1" class="btn btn-info reportbtn" data-toggle="collapse">Report an incident</a>
+                        <div id="demo1" class="collapse">
+                          <div class="well well1">If you are currently dealing with an emergency, please call 000
+                            immediately. It is critical that any incidents, abuse or neglect are reported if observed or
+                            suspected during your shift. Anything entered in the text box
+                            below is only visible to Careuchoose and will
+                            not be displayed to your client unless you opt
+                            in using the checkbox below.
+                          </div>
+                          <div class="col-md-12">
+                            <label>Incidents</label>
+                            <textarea type="text"
+                                      placeholder="[Optional] Please leave this blank if you do not need to report an incident."
+                                      class="form-control borcolor" [(ngModel)]="incidant" name="incidant"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="modal-footer hidebr1">
+                  <!--<button type="button" class="btn btn-success" data-dismiss="modal">Post</button>-->
+                  <div class="row check">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                      <label class="container text-left">I want to share the incident details with my clients
+                        <input type="checkbox" [(ngModel)]="client" name="client" required>
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+                      <button class="btn btn-primary" type="submit"
+                              [disabled]="!jobform.form.valid"
+                              (click)="postSessionData(jobform)" data-dismiss="modal">Post
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div *ngIf="timesheet.length === 0 ">
+          <div class="nodata nodataimage">No Timesheet yet to show</div>
+        </div>
+        <div *ngIf="timesheet.length > 0">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Client</th>
+                <th>Delivery Date</th>
+                <th>Start Time</th>
+                <th>Hours</th>
+                <th>Net rate</th>
+                <th>Rate type</th>
+                <th>Total</th>
+                <th>Approved</th>
+                <th>Invoiced</th>
+                <th>Payment</th>
+                <th>Details</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let timesheets of timesheet; let i = index">
+                <ng-container *ngFor="let data of datum">
+                  <td *ngIf="timesheets.client_id == data.id">{{data.first_name}}</td>
+                </ng-container>
+
+                <td>{{timesheets.end_time | date:'dd/MM/yyyy'}}</td>
+                <td>{{timesheets.start_time | date:'dd/MM/yyyy'}}</td>
+                <td>10h</td>
+                <td>$30</td>
+                <td>hourly</td>
+                <td>$300</td>
+                <td class="text-warning">Pending</td>
+                <td>invoiced</td>
+                <td class="text-warning">unpaid</td>
+                <!--<td><i class="fa fa-file-text-o" aria-hidden="true"></i></td>-->
+                <td><a data-toggle="modal" data-target="#work" (click)="timesheetData(i)"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+                </td>
+              </tr>
+              <tr *ngFor="let game of games | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                <td>{{i}}</td>
+                <td>{{game.name}}</td>
+                <td>{{game.genre}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr>
+          <div class="pagination">
+            <!--| paginate: { itemsPerPage: 5, currentPage: p }; let i = index-->
+            <pagination-controls id="some_id"
+                                 (pageChange)="p = $event"
+                                 maxSize="9"
+                                 directionLinks="true"
+                                 autoHide="true"
+                                 responsive="true"
+                                 previousLabel="Previous"
+                                 nextLabel="Next"
+                                 screenReaderPaginationLabel="Pagination"
+                                 screenReaderPageLabel="page"
+                                 screenReaderCurrentLabel="You're on page">
+            </pagination-controls>
+            <!--<pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div id="work" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Time Sheet
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+        <div class="padd">
+          <div class="row">
+            <div class="col-md-3 text-right">
+              <!--<div class="form-group has-success has-feedback">
+                <label for="usr">Client</label>
+                <input type="text" id="usr" class="form-control" name="company">
+              </div>-->
+              <strong>
+              <p>Client :</p>
+              <!--<p>Delivery Date :</p>
+              <p>Start Time :</p>-->
+              <p>Hours :</p>
+              <p>Net rate :</p>
+              <p>Rate type :</p>
+              <p>Total :</p>
+              <p>Approved :</p>
+              <p>Invoiced :</p>
+              <p>Payment :</p>
+              </strong>
+            </div>
+            <div class="col-md-9">
+             <strong *ngIf="timesheet_data">
+              <ng-container *ngFor="let data of datum">
+                <p *ngIf="timesheet_data.client_id == data.id">{{data.first_name}}</p>
+              </ng-container>
+              <!--<p>{{timesheet_data.created_on}}</p>
+              <p>{{timesheet_data.created_on}}</p>-->
+              <p>10h</p>
+              <p>$30</p>
+              <p>hourly</p>
+              <p>$300</p>
+              <p class="text-warning">Pending</p>
+              <p>invoiced</p>
+              <p class="text-warning">unpaid</p>
+             </strong>
+             <!-- <div class="form-group has-success has-feedback">
+                <label>Delivery Date</label>
+                <input type="text" class="form-control" name="job" id="comment"/>
+              </div>-->
+            </div>
+            <div class="row">
+              <div class="col-md-8"></div>
+              <div class="col-md-4 text-right">
+                <button class="btn btn-primary" (click)="redirect()">Pay</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

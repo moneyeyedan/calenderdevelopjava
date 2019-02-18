@@ -1,0 +1,1627 @@
+<app-header></app-header>
+<div class="profile" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <div class="col-md-3">
+      <app-personal-info></app-personal-info>
+
+    </div>
+    <div class="col-md-5">
+      <ng-container *ngIf="loginData.value.profile_type === 'CAREWORKER'">
+        <div class="card box2">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="divheading">
+                Australian Business Number (ABN)<span><i class="fa fa-check-circle" aria-hidden="true"
+                                                         *ngIf="verification.abn;else other"></i><ng-template #other><i
+                class="fa fa-exclamation-circle"></i></ng-template></span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="text-right">
+                <a data-toggle="modal" data-target="#verification"><i class="fa fa-pencil-square-o blue blue"
+                                                                      aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+          <hr class="border-bottom">
+          <h5>Australian Business Number (ABN)</h5>
+          <input type="text" class="form-control" name="Abn" readonly [(ngModel)]="verification.abn"
+                 placeholder="Enter Your Australian Business Number (ABN)"
+                 #abn="ngModel" ngModel minlength="11" maxlength="15" required>
+          <app-error [control]="abn"></app-error>
+        </div>
+      </ng-container>
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="divheading">
+              Basic Information<span><i class="fa fa-check-circle" aria-hidden="true"
+                                        *ngIf="cw_personality;else other"></i><ng-template #other><i
+              class="fa fa-exclamation-circle"></i></ng-template></span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="text-right">
+              <a data-toggle="modal" data-target="#personal"><i class="fa fa-pencil-square-o blue blue"
+                                                                aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+
+        <h5>WORKING PREFERENCES</h5>
+        <div class="row padd">
+          <div class="col-md-4" *ngIf="pw_no_preferences">
+            <p>No Preferences</p>
+          </div>
+          <div class="col-md-4" *ngIf="pw_male_only">
+            <p>Male Only</p>
+          </div>
+          <div class="col-md-4" *ngIf="pw_female_only">
+            <p>Female Only</p>
+          </div>
+          <div class="col-md-4" *ngIf="pw_non_smoker">
+            <p>Non-Smoker</p>
+          </div>
+          <div class="col-md-4" *ngIf="pw_no_pets">
+            <p>No Pets</p>
+          </div>
+        </div>
+        <hr>
+        <div *ngIf="culturalBac;else no">
+          <h5>CULTURE BACKGROUNDS</h5>
+          <div><p>{{culturalBac}}</p></div>
+          <hr>
+          <h5>INTERESTS / LOVES</h5>
+          <p>{{hobbies}}</p>
+          <hr>
+          <h5>LANGUAGE, RELIGION & CULTURE</h5>
+          <div><p>{{firstLan}}</p></div>
+          <hr>
+          <h5>RELIGIONS</h5>
+          <div><p>{{religion}}</p></div>
+          <hr>
+          <h5>PERSONALITY</h5>
+          <p>{{cw_personality}}</p>
+        </div>
+        <ng-template #no>No Basic information</ng-template>
+
+      </div>
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="divheading">
+              Rates & Availability Guide<span><i class="fa fa-check-circle" aria-hidden="true"
+                                                 *ngIf="Availability.free_client_meet;else other"></i><ng-template
+              #other><i class="fa fa-exclamation-circle"></i></ng-template></span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="text-right">
+              <a data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-pencil-square-o blue blue" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+
+        <div>
+          <div *ngIf="Availability.free_client_meet">
+            <p class="padg">Meet And Greet</p>
+            <h4 class="padd blue"><b>FREE</b></h4>
+            <p class="blue"><i class="fa fa-circle" aria-hidden="true"></i>For the purposes of an interview with
+              potential
+              new
+              clients</p>
+
+          </div>
+
+          <div class="row ad padd" style="display: block">
+            <div class="col-md-4" *ngIf="Availability.avail_weekday">
+              <div class="box clr1">
+                <p>WEEKDAY</p>
+                <h4>{{Availability.avail_weekday_hourly_rate}}<span>p/h</span></h4>
+              </div>
+            </div>
+            <div class="col-md-4" *ngIf="Availability.avail_weekend">
+              <div class="box clr2">
+                <p>WEEKEND</p>
+                <h4>{{Availability.avail_weekend_hourly_rate}}<span>p/h</span></h4>
+              </div>
+            </div>
+            <div class="col-md-4" *ngIf="Availability.avail_24hour">
+              <div class="box clr3">
+                <p>24HOURSHIFT</p>
+                <h4>{{Availability.avail_24hour_rate}}<span>p/h</span></h4>
+              </div>
+            </div>
+          </div>
+          <p class="padg">Available Days</p>
+
+          <div class="row date">
+            <div class="col-md-1">
+              <div class="blue cross" *ngIf="Availability.avail_monday; else elsepart">
+                <b> Mon</b>
+              </div>
+              <ng-template #elsepart class="cross"> Mon</ng-template>
+            </div>
+            <div class="col-md-1">
+              <div class="blue cross" *ngIf="Availability.avail_tuesday; else elsepart1">
+                <b> Tue</b>
+              </div>
+              <ng-template #elsepart1 class="cross"> Tue</ng-template>
+            </div>
+            <div class="col-md-1">
+              <div class="blue cross" *ngIf="Availability.avail_wednesday; else elsepart2">
+                <b>Wed</b>
+              </div>
+              <ng-template #elsepart2 class="cross"> Wed</ng-template>
+            </div>
+            <div class="col-md-1">
+              <div class="blue cross" *ngIf="Availability.avail_thursday; else elsepart3">
+                <b>Thu</b>
+              </div>
+              <ng-template #elsepart3 class="cross">Thu</ng-template>
+            </div>
+            <div class="col-md-1">
+              <div class="blue cross" *ngIf="Availability.avail_friday; else elsepart4">
+                <b>Fri</b>
+              </div>
+              <ng-template #elsepart4 class="cross">Fri</ng-template>
+            </div>
+            <div class="col-md-1">
+              <div class="blue cross" *ngIf="Availability.avail_saturday; else elsepart5">
+                <b>Sat</b>
+              </div>
+              <ng-template #elsepart5 class="cross">Sat</ng-template>
+            </div>
+            <div class="col-md-1">
+              <div class="blue cross" *ngIf="Availability.avail_sunday; else elsepart6">
+                <b>Sun</b>
+              </div>
+              <ng-template #elsepart6 class="cross">Sun</ng-template>
+            </div>
+          </div>
+          <hr>
+          <p class="gray">*Please note a 10% service fee will be deducted from your agreed hourly rate, which covers
+            insurance
+            provided by Zurich</p>
+        </div>
+      </div>
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="divheading">
+              Type Of Care<span><i class="fa fa-check-circle" aria-hidden="true" *ngIf="ssda;else other"></i><ng-template
+              #other><i class="fa fa-exclamation-circle"></i></ng-template></span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="text-right">
+              <a data-toggle="modal" data-target="#typeofcare"><i class="fa fa-pencil-square-o blue blue"
+                                                                  aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div *ngIf="ssda">
+          <h5><i class="fa fa-circle" aria-hidden="true"></i>Social Support & Domestic Assistant</h5>
+          <div class="padd lines">
+            <div class="row" style="display: block">
+              <div class="col-md-6" id="wrapper_1" *ngFor="let ssdval of ssad_value">
+                <div class="row">
+                  <div class="col-md-2">
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-10">
+                    <p>{{ssdval}}</p>
+                  </div>
+                </div>
+                <hr class="left">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="personal_care">
+          <h5><i class="fa fa-circle" aria-hidden="true"></i>Personal Care</h5>
+          <div class="padd lines">
+            <div class="row" style="display: block">
+              <div class="col-md-6" id="wrapper_2" *ngFor="let prsval of personal_value">
+                <div class="row">
+                  <div class="col-md-2">
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-10">
+                    <p>{{prsval}}</p>
+                  </div>
+                </div>
+                <hr class="left">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nursing_services">
+          <h5><i class="fa fa-circle" aria-hidden="true"></i>Nursing Services</h5>
+          <div class="padd lines">
+            <div class="row" style="display: block">
+              <div class="col-md-6" id="wrapper_3" *ngFor="let nurval of nursing_value">
+                <div class="row">
+                  <div class="col-md-2">
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-10">
+                    <p>{{nurval}}</p>
+                  </div>
+                </div>
+                <hr class="left">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="allied_health_service">
+          <h5><i class="fa fa-circle" aria-hidden="true"></i>Allied Health Services</h5>
+          <div class="padd lines">
+            <div class="row" style="display: block">
+              <div class="col-md-6" id="wrapper_4" *ngFor="let alval of allied_health_value">
+                <div class="row">
+                  <div class="col-md-2">
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-md-10">
+                    <p>{{alval}}</p>
+                  </div>
+                </div>
+                <hr class="left">
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="gray">This support worker is not qualified to provide medication assistance or medication
+          management.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="divheading ">
+              Badges
+              <span><i class="fa fa-check-circle" aria-hidden="true" *ngIf="badge.cpr_cert;else other"></i><ng-template
+                #other><i class="fa fa-exclamation-circle"></i></ng-template></span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="text-right">
+              <a data-target="#badgemodal" data-toggle="modal"><i class="fa fa-pencil-square-o blue"
+                                                                  aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div class="row icon-star" *ngIf="badge.cpr_cert;else nobadge">
+          <div class="col-md-4" *ngIf="badge.cpr_cert">
+            <p title="CPR Certificate"><i class="fa fa-star" aria-hidden="true"></i>CPR Certificate</p>
+
+          </div>
+          <div class="col-md-4" *ngIf="badge.first_aid">
+            <p title="First Aid"><i class="fa fa-star" aria-hidden="true"></i>First Aid</p>
+
+          </div>
+          <div class="col-md-4" *ngIf="badge.manual_handling">
+            <p title="Manual Handling Certified"><i class="fa fa-star" aria-hidden="true"></i>Manual Handling Certified
+            </p>
+          </div>
+          <div class="col-md-4" *ngIf="badge.medication_asst">
+            <p title="Medication Assistance"><i class="fa fa-star" aria-hidden="true"></i>Medication Assistance</p>
+          </div>
+          <div class="col-md-4" *ngIf="badge.driving_license">
+            <p title="Valid Driver's License"><i class="fa fa-star" aria-hidden="true"></i>Valid Driver's License</p>
+          </div>
+          <div class="col-md-4" *ngIf="pw_non_smoker">
+            <p title="Non-Smoker"><i class="fa fa-star" aria-hidden="true"></i>Non-Smoker</p>
+          </div>
+          <div class="col-md-4" *ngIf="pw_no_pets">
+            <p title="No Pets"><i class="fa fa-star" aria-hidden="true"></i>No Pets</p>
+          </div>
+        </div>
+        <ng-template #nobadge>
+          <div class="padd">No Badge</div>
+        </ng-template>
+      </div>
+      <div class=" card box2">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="divheading ">
+              Work and Education His....
+              <span><i class="fa fa-check-circle" aria-hidden="true"
+                       *ngIf="(workHistory.company && educationHistory.course_degree && badge.cpr_cert);else other"></i><ng-template
+                #other><i class="fa fa-exclamation-circle"></i></ng-template></span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="text-right">
+              <a data-toggle="modal" data-target="#work"><i class="fa fa-pencil-square-o blue"
+                                                            aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div>
+
+          <div><h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>Employment History</h5>
+            <div class="padd" *ngIf="workHistory.company;else nowork">
+              <p class="ellipsis"><span>Organization : </span>{{workHistory.company}}</p>
+              <p><span>Description : </span>{{workHistory.job_title}}</p>
+              <p><span>Working Hours : </span>{{workHistory.job_start_date}} to {{workHistory.job_end_date}}</p>
+            </div>
+            <ng-template #nowork>
+              <p class="padd">No Employment History</p>
+            </ng-template>
+          </div>
+          <div><h5><i class="fa fa-circle" aria-hidden="true"></i>Qualification History</h5>
+            <div class="padd" *ngIf="educationHistory.course_degree;else noeducation">
+              <p>Degree/Course : {{educationHistory.course_degree}}</p>
+              <p>Institution : {{educationHistory.course_institution}}</p>
+              <p>Date : {{educationHistory.course_start_date}} to {{educationHistory.course_end_date}}</p>
+            </div>
+            <ng-template #noeducation>
+              <div class="padd">
+                No Qualification History
+              </div>
+            </ng-template>
+          </div>
+          <div><h5><i class="fa fa-circle" aria-hidden="true"></i>Other Qualifications</h5></div>
+          <div class="padd" *ngIf="badge.cpr_cert; else nobadge">
+            <p *ngIf="badge.cpr_cert">CPR Certificate</p>
+            <p *ngIf="badge.first_aid">First Aid</p>
+            <p *ngIf="badge.manual_handling">Manual Handling Certified</p>
+            <p *ngIf="badge.medication_asst">Medication Assistance</p>
+            <p *ngIf="badge.driving_license">Valid Driver's License</p>
+          </div>
+          <ng-template #nobadge>
+            <div class="padd">No Other Qualifications</div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="divheading ">
+              Work Locations
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="text-right">
+              <a data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-pencil-square-o blue" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div class="row" style="display: block">
+          <!-- <div class="Google map"> -->
+            <div>
+              <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+              </agm-map>
+          </div>
+          <p class="text-center">This worker has indicated that they are willing to work in these locations and
+            surrounding areas: <a>See all</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- Modal for Availlability -->
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Availability
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+        <form class="padd" #profileForm="ngForm">
+          <div class="row">
+            <div class="col-md-12">
+              <p>Enter the suburbs you will be available to work in. The more locations you enter, the more likely it is
+                that clients will find you.</p>
+              <div class="form-group has-success">
+                <input ngx-google-places-autocomplete [options]="{ types: ['(cities)'], componentRestrictions: { country: 'AU' } }" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" type="text" class="form-control" name="Address" [(ngModel)]="address">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group has-success">
+                <label for="usr">My Locations:</label>
+                <p>Virginia NT 0834</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <h5>Rates</h5>
+            <p>Your hourly rates will be displayed on your profile as a guide for clients. Specific rates must be agreed
+              with each client before you accept a job.</p>
+            <hr>
+            <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>
+              How much to charge?</h5>
+            <p>Most workers charge between $30-$40 an hour. Remember that 10% will go to Careuchoose to cover all
+              back-office
+              support and insurances, which we arrange on your behalf for any work delivered through the platform.</p>
+          </div>
+
+          <div class="wid">
+            <div class="row check">
+
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <label class="container">24 Hour/Overnight
+                    <input type="checkbox" [checked]="Availability.avail_weekday" id="yourBox"
+                           (change)="Availability.avail_weekday = !Availability.avail_weekday"
+                           (click)="Availability.avail_weekday_hourly_rate = 0"/>
+                    <span class="checkmark"></span>
+                  </label>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group has-success">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" name="weekdays" id="yourText"
+                           [(ngModel)]="Availability.avail_weekday_hourly_rate">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row check">
+
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <label class="container">Saturday/Sunday
+                    <input type="checkbox" [checked]="Availability.avail_weekend"
+                           (change)="Availability.avail_weekend = !Availability.avail_weekend"
+                           (click)="Availability.avail_weekend_hourly_rate = 0 "/>
+                    <span class="checkmark"></span>
+                  </label>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group has-success">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" name="weekend"
+                           [(ngModel)]="Availability.avail_weekend_hourly_rate">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row check">
+
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <label class="container">Weekday
+                    <input type="checkbox" [checked]="Availability.avail_24hour"
+                           (change)="Availability.avail_24hour = !Availability.avail_24hour"
+                           (click)="Availability.avail_24hour_rate=0 "/>
+                    <span class="checkmark"></span>
+                  </label>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group has-success">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" name="hourshift"
+                           [(ngModel)]="Availability.avail_24hour_rate">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>
+            Weekdays
+          </h5>
+          <div class="row check">
+            <div class="col-md-2">
+              <label class="container">Mon
+                <input type="checkbox" [checked]="Availability.avail_monday" value="Mon"
+                       (change)="Availability.avail_monday = !Availability.avail_monday">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="container">Tue
+                <input type="checkbox" [checked]="Availability.avail_tuesday"
+                       (change)="Availability.avail_tuesday = !Availability.avail_tuesday">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="container">Wed
+                <input type="checkbox" [checked]="Availability.avail_wednesday"
+                       (change)="Availability.avail_wednesday = !Availability.avail_wednesday">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="container">Thu
+                <input type="checkbox" [checked]="Availability.avail_thursday"
+                       (change)="Availability.avail_thursday = !Availability.avail_thursday">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="container">Fri
+                <input type="checkbox" [checked]="Availability.avail_friday"
+                       (change)="Availability.avail_friday = !Availability.avail_friday">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>
+            Weekends
+          </h5>
+          <div class="row check">
+            <div class="col-md-2">
+              <label class="container">Sat
+                <input type="checkbox" [checked]="Availability.avail_saturday"
+                       (change)="Availability.avail_saturday = !Availability.avail_saturday">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-2">
+              <label class="container">Sun
+                <input type="checkbox" [checked]="Availability.avail_sunday"
+                       (change)="Availability.avail_sunday = !Availability.avail_sunday">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr>
+          <p>Your rates are indicative and are agreed with each client before you accept a job.</p>
+          <div class="row check">
+            <div class="col-md-12">
+              <label class="container">I am willing to meet potential clients for free for the purposes of an interview.
+                <input type="checkbox" [checked]="Availability.free_client_meet"
+                       (change)="Availability.free_client_meet = !Availability.free_client_meet">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-5">
+              <div class="text-right" *ngIf="isAvails">
+                <button class="btn btn-primary btn-disable" (click)="editAvailability(profileForm);profileForm.reset()">Save
+                </button>
+              </div>
+              <div class="text-right" *ngIf="!isAvails">
+                <button class="btn btn-primary btn-disable" (click)="createAvailability(profileForm);profileForm.reset()">Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- Modal for type of care-->
+<div class="modal fade" id="typeofcare" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Services Offered
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+        <div class="padd">
+          <div class="row check">
+
+            <div class="col-md-6">
+              <label class="container">Social Support & Domestic Assistance
+                <input type="checkbox" value="Mon" name="ssda" [(ngModel)]="ssda" (change)="!ssda">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+            <div class="col-md-6">
+              <label class="container">Personal Care
+                <input type="checkbox" name="personal" [(ngModel)]="personal_care"
+                     (change)="!personal_care"  >
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-6">
+              <label class="container">Nursing Services
+                <input type="checkbox" name="nurssing" [(ngModel)]="nursing_services"
+                       (change)="!nursing_services">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-6">
+              <label class="container">Allied Health Services
+                <input type="checkbox" name="allied" [(ngModel)]="allied_health_service"
+                       (change)="!allied_health_service">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+          </div>
+          <hr>
+          <div class="row check" *ngIf="ssda">
+            <div class="col-md-6" *ngFor="let tc of ssad_typecare;let i=index">
+              <label class="container">{{tc.label}}
+                <input type="checkbox" name="type"
+                       [checked] = "isPresent(tc, 'ssad')"
+                       (change)="putData(tc, $event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <hr>
+          </div>
+
+          <div class="row check" *ngIf="personal_care">
+            <div class="col-md-6" *ngFor="let pc of prs_typecare">
+              <label class="container">{{pc.label}}
+                <input type="checkbox" name="type"
+                       [checked] = "isPresent(pc, 'pc_care')"
+                       (change)="putData(pc, $event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+          </div>
+          <div class="row check" *ngIf="nursing_services">
+            <div class="col-md-6" *ngFor="let Nur of nurs_typecare">
+              <label class="container">{{Nur.label}}
+                <input type="checkbox" name="type"
+                       [checked] = "isPresent(Nur, 'nursing')"
+                       (change)="putData(Nur, $event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+          </div>
+          <div class="row check" *ngIf="allied_health_service">
+            <div class="col-md-6" *ngFor="let health of allied_typecare">
+              <label class="container">{{health.label}}
+                <input type="checkbox" name="type"
+                       [checked] = "isPresent(health, 'alliedservice')"
+                       (change)="putData(health, $event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+          </div>
+          <h5>Would you like to add a badge to your profile that shows your support for LGBTI people?</h5>
+          <div class="btn-group " id="status" data-toggle="buttons">
+            <label class="btn btn-default btn-on btn-lg outl bt1 active">
+              <input type="radio" value="1" name="multifeatured_module[module_id][status]" [checked]="lgbti"
+                     (change)="lgbti = !lgbti">Yes</label>
+            <label class="btn btn-default btn-off btn-lg outl bt1">
+              <input type="radio" value="0" name="multifeatured_module[module_id][status]">No</label>
+          </div>
+          <h5>Who do you prefer to work with?</h5>
+          <div class="row check">
+            <div class="col-md-4">
+              <label class="container">No Preferences
+                <input type="checkbox" [checked]="pw_no_preferences"
+                       (change)="pw_no_preferences = !pw_no_preferences">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label class="container">Male Only
+                <input type="checkbox" [checked]="pw_male_only"
+                       (change)="pw_male_only = !pw_male_only">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label class="container">Female Only
+                <input type="checkbox" [checked]="pw_female_only"
+                       (change)="pw_female_only = !pw_female_only">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label class="container">No Pets
+                <input type="checkbox" [checked]="pw_no_pets"
+                       (change)="pw_no_pets = !pw_no_pets">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label class="container">Non-Smoker
+                <input type="checkbox" [checked]="pw_non_smoker"
+                       (change)="pw_non_smoker = !pw_non_smoker">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-5 text-right">
+              <div class="text-right" *ngIf="isTcAvailable">
+                <button class="btn btn-primary" (click)="editTypeofcare(profileForm);profileForm.reset()">Edit</button>
+              </div>
+              <div class="text-right" *ngIf="!isTcAvailable">
+                <button class="btn btn-primary" (click)="createTypeofcare(profileForm);profileForm.reset()">Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<!-- Modal work history -->
+<div id="work" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Work History
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+        <div class="padd">
+          <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>job History</h5>
+          <div><div class="row">
+            <div class="col-md-6">
+              <div class="form-group has-success has-feedback">
+                <label for="usr">Company</label>
+                <input type="text" class="form-control" name="company" [(ngModel)]="workHistory.company">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group has-success has-feedback">
+                <label>Title</label>
+                <input type="text" class="form-control" name="job" id="comment" [(ngModel)]="workHistory.job_title"/>
+              </div>
+            </div>
+          </div>
+            <div class="row">
+
+              <div class="col-md-6">
+                <label for="usr">Start date & time</label>
+                <div class="form-group has-success">
+                  <!--<label for="usr">Choose Your Rate:</label>-->
+                  <!--<input type="date" class="form-control" name="date" [(ngModel)]="workHistory.job_start_date"
+                         max="1970-12-31" id="StartDate">-->
+                  <input [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8"
+                         [(ngModel)]="job_start_date"
+                         [selectMode]="'rangeFrom'" class="form-control">
+                  <owl-date-time #dt8 [pickerType]="'calendar'" [pickerMode]="'dialog'"
+                                 [hour12Timer]="true"></owl-date-time>
+
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <label for="usr">End date & time</label>
+                <div class="form-group has-success">
+                  <!--<label for="usr">Choose Your Rate:</label>-->
+                  <!--<input type="date" class="form-control" name="personalid" [(ngModel)]="workHistory.job_end_date" id="EndDate">-->
+                  <input [owlDateTimeTrigger]="dt10" [owlDateTime]="dt10"
+                         [(ngModel)]="job_start_date"
+                         [selectMode]="'rangeTo'" class="form-control" name="course_start_date">
+                  <owl-date-time #dt10 [pickerType]="'calendar'" [pickerMode]="'dialog'"
+                                 [hour12Timer]="true"></owl-date-time>
+                </div>
+                <span class="text-danger dateerror"></span>
+              </div>
+
+            </div>
+            <div class="col-md-12 text-right">
+              <button class="btn btn-danger">Delete Job</button>
+            </div>
+          </div>
+          <ng-template class="border" #clone>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group has-success has-feedback">
+                  <label for="usr">Company</label>
+                  <input type="text" class="form-control" name="company">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group has-success has-feedback">
+                  <label>Title</label>
+                  <input type="text" class="form-control" name="job"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-6">
+                <label for="usr">Start date & time</label>
+                <div class="form-group has-success">
+                  <!--<label for="usr">Choose Your Rate:</label>-->
+                  <!--<input type="date" class="form-control" name="date" [(ngModel)]="workHistory.job_start_date"
+                         max="1970-12-31" id="StartDate">-->
+                  <input [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8"
+
+                         [selectMode]="'rangeFrom'" class="form-control">
+                  <owl-date-time #dt8 [pickerType]="'calendar'" [pickerMode]="'dialog'"
+                                 [hour12Timer]="true"></owl-date-time>
+
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <label for="usr">End date & time</label>
+                <div class="form-group has-success">
+                  <!--<label for="usr">Choose Your Rate:</label>-->
+                  <!--<input type="date" class="form-control" name="personalid" [(ngModel)]="workHistory.job_end_date" id="EndDate">-->
+                  <input [owlDateTimeTrigger]="dt10" [owlDateTime]="dt10"
+
+                         [selectMode]="'rangeTo'" class="form-control" name="course_start_date">
+                  <owl-date-time #dt10 [pickerType]="'calendar'" [pickerMode]="'dialog'"
+                                 [hour12Timer]="true"></owl-date-time>
+                </div>
+                <span class="text-danger dateerror"></span>
+              </div>
+
+            </div>
+            <div class="col-md-12 text-right">
+              <button class="btn btn-danger" (click)="remove(i)">Delete Job</button>
+            </div>
+          </ng-template>
+
+          <div #container></div>
+          <button class="btn btn-success" (click)="cloneTemplate()">Add Job</button>
+          <hr>
+          <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>Education and training</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group has-success has-feedback">
+                <label for="usr">Institution</label>
+                <input type="text" class="form-control" name="instute"
+                       [(ngModel)]="educationHistory.course_institution">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group has-success has-feedback">
+                <label>Degree/Course</label>
+                <input type="text" class="form-control" name="degre" [(ngModel)]="educationHistory.course_degree"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <label for="usr">Start date & time</label>
+              <div class="form-group has-success">
+                <!-- <input type="date" class="form-control" name="date1" [(ngModel)]="educationHistory.course_start_date"
+                        max="1979-12-31">-->
+                <input [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12"
+                       [(ngModel)]="course_start_date"
+                       [selectMode]="'rangeFrom'" class="form-control" name="course_start_date">
+                <owl-date-time #dt12 [pickerType]="'calendar'" [pickerMode]="'dialog'"
+                               [hour12Timer]="true"></owl-date-time>
+              </div>
+
+
+            </div>
+            <div class="col-md-6">
+              <label for="usr">End date & time</label>
+              <div class="form-group has-success">
+                <input [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13"
+                       [(ngModel)]="course_start_date"
+                       [selectMode]="'rangeTo'" class="form-control">
+                <owl-date-time #dt13 [pickerType]="'calendar'" [pickerMode]="'dialog'"
+                               [hour12Timer]="true"></owl-date-time>
+                <!--<input type="date" class="form-control" name="date2" [(ngModel)]="educationHistory.course_end_date">-->
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class="row check">
+            <div class="col-md-8">
+              <label class="container">I would like to share incident details with my client
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-5">
+              <div class="text-right" *ngIf="isworkHistory">
+                <button class="btn btn-primary btn-disable" id="workedit" (click)="editworkhistory(profileForm);profileForm.reset()">Save</button>
+              </div>
+              <div class="text-right" *ngIf="!isworkHistory">
+                <button class="btn btn-primary btn-disable" id="work" (click)="createworkhistory(profileForm);profileForm.reset()">Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- Modal for Badge-->
+<div class="modal fade" id="badgemodal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Other Qualifications
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+        <form class="padd max-wid">
+          <div class="row check  upload">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="container marg">CPR Certificate
+                  <input type="checkbox" value="Mon" [checked]="badge.cpr_cert"
+                         (change)="badge.cpr_cert = !badge.cpr_cert">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div *ngIf="badge.cpr_cert">
+                <div class="col-md-4 text-right">
+                  <input type="file" name="imageUpload" id="imageUpload" (click)="readUrl($event, 'cpr_cert_doc')"
+                         class="hide"/>
+                  <label for="imageUpload" class="btn btn-large">Select file</label>
+
+                  <!--<img src="" id="imagePreview" alt="Preview Image" width="200px"/>-->
+                </div>
+                <div class="col-md-2"><a target="_blank">Preview</a></div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label class="container marg">First Aid
+                  <input type="checkbox" [checked]="badge.first_aid"
+                         (change)="badge.first_aid = !badge.first_aid">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div *ngIf="badge.first_aid">
+                <div class="col-md-4 text-right">
+                  <input type="file" name="imageUpload" id="imageUpload6" (change)="readUrl($event,'first_aid_doc')"
+                         class="hide"/>
+                  <label for="imageUpload" class="btn btn-large">Select file</label>
+
+                  <!--<img src="" id="imagePreview" alt="Preview Image" width="200px"/>-->
+                </div>
+                <div class="col-md-2"><a target="_blank">Preview </a></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="container marg">Manual Handling Certified
+                  <input type="checkbox" [checked]="badge.manual_handling"
+                         (change)="badge.manual_handling = !badge.manual_handling">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div *ngIf="badge.manual_handling">
+                <div class="col-md-4 text-right">
+                  <input type="file" name="imageUpload" id="imageUpload3"
+                         (change)="readUrl($event,'manual_handling_doc')" class="hide"/>
+                  <label for="imageUpload" class="btn btn-large">Select file</label>
+
+                  <!--<img src="" id="imagePreview" alt="Preview Image" width="200px"/>-->
+                </div>
+                <div class="col-md-2"><a target="_blank">Preview </a></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="container marg">Medication Assistance
+                  <input type="checkbox" [checked]="badge.medication_asst"
+                         (change)="badge.medication_asst = !badge.medication_asst">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div *ngIf="badge.medication_asst">
+                <div class="col-md-4 text-right">
+                  <input type="file" name="imageUpload" id="imageUpload7"
+                         (change)="readUrl($event,'medication_asst_doc')" class="hide"/>
+                  <label for="imageUpload" class="btn btn-large">Select file</label>
+
+                  <!--<img src="" id="imagePreview" alt="Preview Image" width="200px"/>-->
+                </div>
+                <div class="col-md-2"><a target="_blank">Preview </a></div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="container marg">Valid Driver's License
+                  <input type="checkbox" [checked]="badge.driving_license"
+                         (change)="badge.driving_license = !badge.driving_license">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div *ngIf="badge.driving_license">
+                <div class="col-md-4 text-right">
+                  <input type="file" name="imageUpload" id="imageUpload9"
+                         (change)="readUrl($event,'driving_license_doc')" class="hide"/>
+                  <label for="imageUpload" class="btn btn-large">Select file</label>
+
+                  <!--<img src="" id="imagePreview" alt="Preview Image" width="200px"/>-->
+                </div>
+                <div class="col-md-2"><a target="_blank">Preview </a></div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-5">
+              <div class="text-right" *ngIf="isBadges">
+                <button class="btn btn-primary outl" id="badgesedit" (click)="editBadge(profileForm);profileForm.reset()">Save</button>
+              </div>
+              <div class="text-right" *ngIf="!isBadges">
+                <button class="btn btn-primary" id="badges" (click)="createBadge(profileForm);profileForm.reset()">Post</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--model for personal info-->
+<div id="personal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Background
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+        <div class="row">
+          <div class="max">
+            <!-- Nav tabs -->
+            <div class="">
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#language" aria-controls="home" role="tab"
+                                                          data-toggle="tab">Languages</a></li>
+                <li role="presentation"><a href="#background" aria-controls="profile" role="tab" data-toggle="tab">Backgrounds</a>
+                </li>
+                <li role="presentation"><a href="#about" aria-controls="messages" role="tab"
+                                           data-toggle="tab">Interests</a></li>
+                <!--<li role="presentation"><a href="#account" aria-controls="messages" role="tab" data-toggle="tab">Account Details</a></li>-->
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="language">
+                  <h5><b>First Languages</b></h5>
+                  <div class="row check padd">
+                    <div class="col-md-3" *ngFor="let language of Languages">
+                      <label class="container">{{language.label}}
+                        <input type="checkbox" name="type" [checked]="isAvail(language, 'languages')"
+                               (change)="Checkedfirst(language, $event)">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <hr>
+                  <h5><b>Second Languages</b></h5>
+                  <div class="row check padd">
+                    <div class="col-md-3" *ngFor="let seclanguage of secLanguages">
+                      <label class="container">{{seclanguage.label}}
+                        <input type="checkbox" name="type" [checked]="isAvail(seclanguage, 'second_languages')"
+                               (change)="Checkedsec(seclanguage, $event)">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+
+                  </div>
+                  <hr>
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="background">
+                  <h5>Cultural Background</h5>
+                  <p>Please select your cultural background. You are not required to answer these questions. However if
+                    you choose
+                    to answer it will allow customers with more specific needs to find and hire you.</p>
+                  <div class="row check padd">
+                    <div class="col-md-3" *ngFor="let cultural of cultural_background">
+                      <label class="container">{{cultural.label}}
+                        <input type="checkbox" name="type" [checked]="isAvail(cultural, 'cultural_background')"
+                               (click)="Checkedcultural(cultural, $event)"
+                        >
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+
+                  </div>
+                  <hr>
+                  <div *ngIf="western" class="row check padd">
+                    <h5>Your Western European Background</h5>
+                    <div class="col-md-3" *ngFor="let western of cb_western_european">
+                      <label class="container">{{western.label}}
+                        <input type="checkbox" name="type" [checked]="isAvail(western, 'cb_western_european')"
+
+                        >
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div *ngIf="asian" class="row check padd">
+                    <h5>Your Asian Background</h5>
+                    <div class="col-md-3" *ngFor="let asian of cb_asian">
+                      <label class="container">{{asian.label}}
+                        <input type="checkbox" name="type" [checked]="isAvail(asian, 'cb_asian')"
+                               (change)="Checkedasian(asian, $event)"
+                        >
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div *ngIf="middleeastern" class="row check padd">
+                    <h5>Your Middle Eastern Background</h5>
+                    <div class="col-md-3" *ngFor="let Middle of cb_middle_eastern">
+                      <label class="container">{{Middle.label}}
+                        <input type="checkbox" name="type" checked="{{Middle.value}}"
+                        >
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div *ngIf="Southern" class="row check padd">
+                    <h5>Your Southern & Eastern European Background</h5>
+                    <div class="col-md-3" *ngFor="let Southern of cb_southern">
+                      <label class="container">{{Southern.label}}
+                        <input type="checkbox" name="type" checked="{{Southern.value}}"
+                        >
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <hr>
+                  <h5>Your Religion</h5>
+                  <p>You are not required to answer, however if you choose to it will allow customers with more specific
+                    needs to
+                    find and hire you.</p>
+
+                  <div class="row check padd">
+                    <div class="col-md-3" *ngFor="let religion of Religion">
+                      <label class="container">{{religion.label}}
+                        <input type="checkbox" name="type" [checked]="isAvail(religion, 'religion')"
+                               (change)="Checkedreligian(religion, $event)">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+
+                  </div>
+                  <hr>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="about">
+
+                  <div class="radio">
+
+                    <h5>Personality</h5>
+                    <p>Which of the following best describes your personality at work?
+                    </p>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label class="container">Outgoing and engaging
+                          <input type="radio" checked="checked" name="radio" value="Outgoing and engaging"
+                                 (click)="radioevent($event)"
+                                 [(ngModel)]="cw_personality">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="container">Calm and relaxed
+                          <input type="radio" name="radio" value="Calm and relaxed" (click)="radioevent($event)"
+                                 [(ngModel)]="cw_personality">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="check">
+                    <h5>Interests / Hobbies / Loves</h5>
+                    <div class="col-md-4" *ngFor="let interest of Interest">
+                      <label class="container">{{interest.label}}
+                        <input type="checkbox" name="type" [checked]="isAvail(interest, 'interests_hobbies_loves')"
+                               (change)="Checkedinterst(interest, $event)">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <!--<div class="tab-pane" id="account">
+                  <h5 class="">Account Details (of the person opening the account)</h5>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group has-success has-feedback">
+                        <label for="usr">First name</label>
+                        <input type="text" class="form-control" name="firstname" [(ngModel)]="firstname">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group has-success has-feedback">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lastname" [(ngModel)]="lastname"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="usr">Date of Birth</label>
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="date" class="form-control" name="date" [(ngModel)]="workHistory.job_start_date">
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="sel1">Gender</label>
+                        <select class="form-control" id="sel1">
+                          <option>Male</option>
+                          <option>Female</option>
+
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="usr">Postcode</label>
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="number" class="form-control" name="date" [(ngModel)]="postcode">
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <h5>Residential Address</h5>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="text" class="form-control" name="Address">
+
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="usr">Suburb</label>
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="text" class="form-control" name="Suburb">
+
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="sel1">State</label>
+                        <select class="form-control">
+                          <option *ngFor="let state of State">{{state.label}}</option>
+
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <h5>Postal Address</h5>
+                  <div class="row check padd">
+                    <div class="col-md-10">
+                      <label class="container">Same as residential address
+                        <input type="checkbox" name="type">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label for="usr">Postcode</label>
+
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="text" class="form-control" name="add">
+
+                      </div>
+                      <label for="usr">Postcode</label>
+
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="text" class="form-control" name="address">
+
+                      </div>
+                    </div>
+                  </div>
+                  <h5><i class="fa fa-mobile" aria-hidden="true"></i>Mobile app</h5>
+                  <p>Don’t miss important job notifications - make sure you download the free Mable app for <span>iPhone</span> and <span>Android</span>.</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="usr">Contact Phone</label>
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="text" class="form-control" name="contact" [(ngModel)]="contactnumber">
+
+                      </div>
+                    </div>
+                    <div class="col-md-6 check">
+                      <p>The free Mable app for <span>iPhone</span> and <span>Android</span>  is preferred for notifications.</p>
+                      <label class="container">Receive SMS when notifications are sent
+                        <input type="checkbox" name="sms_alert" [checked]="sms_alert"
+                               (change)="sms_alert = !sms_alert">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <h5>Emergency contacts</h5>
+                  <div class="row">
+                    <div class="col-md-4"> <label for="usr">Name</label>
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="text" class="form-control" name="Name" [(ngModel)]="emergencyname">
+                      </div>
+                  </div>
+                    <div class="col-md-4"> <label for="usr">Phone</label>
+                      <div class="form-group has-success">
+                        <label for="usr">Choose Your Rate:</label>
+                        <input type="number" class="form-control" name="Phone" [(ngModel)]="emergencyphone">
+                      </div>
+                    </div>
+                    <div class="col-md-4"> <div class="form-group">
+                      <label for="sel1">Relationship</label>
+                      <select class="form-control" name="relation" [(ngModel)]="emergencyrelationship">
+                        <option *ngFor="let relation of relationship">{{relation.label}}</option>
+
+                      </select>
+                    </div>
+                    </div>
+              </div>
+            </div>-->
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-7"></div>
+              <div class="col-md-5">
+                <div class="text-right" *ngIf="back">
+                  <button class="btn btn-primary outl" id="backedit" (click)="editbackground(profileForm);profileForm.reset()">Save
+                  </button>
+                </div>
+                <div class="text-right" *ngIf="!back">
+                  <button class="btn btn-primary" id="back" (click)="createbackground(profileForm);profileForm.reset()">post
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!--model for verification info-->
+
+  </div>
+</div>
+<div id="verification" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Verification
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div class="padd">
+          <h5>Australian Business Number (ABN)</h5>
+          <input type="text" class="form-control" name="Abn" (keypress)="numberOnly($event)" maxlength="50" [(ngModel)]="verification.abn"
+                 placeholder="Enter Your Australian Business Number (ABN)"
+          >
+          <hr>
+          <h5>Police Check</h5>
+          <p>To ensure those seeking care are safely and properly cared for, the Australian Government requires that all
+            Support Workers must have a National Criminal History Record Check (also known as Police Check), for working
+            with vulnerable people (e.g. ageing individuals and children) not more than 3 years old. You will need to
+            provide a valid police check before your profile can go live on Careuchoose</p>
+          <p class=""><i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i>Need a Police Check? <a>Find
+            out
+            more</a></p>
+          <div class="row check padd">
+            <div>
+              <label class="container">I have a valid Police Check
+                <input type="checkbox" name="police" [checked]="verification.police_check"
+                       (change)="verification.police_check = !verification.police_check"
+                       (click)="verification.police_check_ref_num = null; verification.police_check_doi = null">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="row" *ngIf="verification.police_check">
+              <div class="col-md-4">
+                <label>Reference Number</label>
+                <input type="text" name="abn-no" class="form-control" (keypress)="numberOnly($event)" maxlength="30" [(ngModel)]="verification.police_check_ref_num">
+              </div>
+              <div class="col-md-4">
+                <label for="usr">Date of Issue</label>
+                <div class="">
+                  <!--<input type="date" >-->
+                  <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" class="form-control" name="doi" [(ngModel)]="verification.police_check_doi">
+                  <owl-date-time #dt [pickerMode]="'dialog'"></owl-date-time>
+                </div>
+              </div>
+              <div class="col-md-4"></div>
+              <div class="col-md-12">
+                <label class="container">I declare that I have not committed or been charged with a criminal offence
+                  since the Date of Issue of my police check. If you cannot make this declaration, you will need to
+                  apply for a new police check.
+                  <input type="checkbox" name="police" [checked]="verification.offence_history"
+                         (change)="verification.offence_history = !verification.offence_history">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <h5>
+            Working with Children Check</h5>
+          <p>All support workers offering services for children under 18 years old must have a current Working With
+            Children Check from their state. If you plan to offer services for children enter your Working With Children
+            Check details below.</p>
+          <div class="row check padd">
+            <div>
+              <label class="container">I have a valid Working with Children Check
+                <input type="checkbox" name="child" [checked]="verification.children_check"
+                       (change)="verification.children_check = !verification.children_check"
+                       (click)="verification.children_check_ref_num = null; verification.children_check_expiry_date = null">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="row" *ngIf="verification.children_check">
+              <div class="col-md-4">
+                <label>Reference Number</label>
+                <input type="text" name="abn-no" class="form-control" (keypress)="numberOnly($event)" maxlength="30" [(ngModel)]="verification.children_check_ref_num">
+              </div>
+              <div class="col-md-4">
+                <label for="usr">Expiry Date</label>
+                <div class="">
+                  <input [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control" name="doi"
+                         [(ngModel)]="verification.children_check_expiry_date">
+                  <owl-date-time #dt1 [pickerMode]="'dialog'"></owl-date-time>
+                </div>
+              </div>
+              <div class="col-md-4"></div>
+
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-7"></div>
+          <div class="col-md-5">
+            <div class="text-right" *ngIf="isverification">
+              <button class="btn btn-primary outl " id="verify" (click)="editverification(profileForm);profileForm.reset()">Save
+              </button>
+            </div>
+            <div class="text-right" *ngIf="!isverification">
+              <button class="btn btn-primary " id="verifypost" (click)="createverification(profileForm);profileForm.reset()">Post
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

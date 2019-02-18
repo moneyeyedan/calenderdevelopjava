@@ -1,0 +1,155 @@
+<app-header></app-header>
+<div class="row chat">
+  <div class="col-md-9">
+    <div class="card box2" id="nopadd">
+      <div class="row padd">
+        <div class="col-md-10">
+          <div class="divheading" *ngIf="clientdata">
+            My Conversations {{clientdata.first_name}} {{clientdata.last_name}}
+          </div>
+          <div class="divheading" *ngIf="!clientdata">
+            My Conversations
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom" id="nomar">
+
+      <div class="panel messages-panel">
+        <div class="contacts-list">
+          <ul class="nodata text-center" *ngIf="ischatlistempty">
+            No one in your network to chat
+          </ul>
+          <ul class="list-unstyled contacts">
+            <li *ngFor="let chat of chatlist" data-toggle="tab" (click)="getchatconversation(chat.room_id, chat)" [attr.id]="chat.room_id" [attr.data-target]="'#inbox-message-'+ chat.room_id">
+              <div class="message-count"> 1</div>
+              <img alt="" class="img-circle medium-image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+
+              <div class="vcentered info-combo">
+                <h3 class="no-margin-bottom name"> {{chat.first_name }} {{chat.last_name}}</h3>
+                <h5> {{chat.job_reference}}</h5>
+              </div>
+              <div class="contacts-add">
+                <span class="message-time"> 2:32 <sup>AM</sup></span>
+                <i class="fa fa-trash-o"></i>
+                <i class="fa fa-paperclip"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content">
+          <div class="text-center message-subject"> you are discussing on service : <strong *ngIf="chatdata">{{chatdata.job_reference}}</strong></div>
+        <div class="col-md-8 nodata nodataimage" *ngIf="ischatempty">
+            No messages to display yet
+          </div>
+          <div *ngFor="let chat of chatlist"  class="tab-pane message-body" [attr.id]="'inbox-message-'+ chat.room_id">
+
+            <div class="message-chat">
+              <div class="chat-body" [attr.id]="'chat-body-'+ chat.room_id">
+              </div>
+              <div class="chat-footer">
+                <form #frm="ngForm" (ngSubmit)="sendmessage()">
+                  <input type="text" id="message" [(ngModel)]="txtmessage" name="txtmessage" placeholder="Write your message..." class="send-message-text">
+                  <label class="upload-file">
+                    <input type="file" required="">
+                    <i class="fa fa-paperclip"></i>
+                  </label>
+                  <button type="submit" class="send-message-button btn-info"><i class="fa fa-send"></i></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card box2">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="divheading">
+            Agreement
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+      <div class="agreements">
+        <div *ngIf="logindata.value.profile_type == 'CLIENT'">
+
+        </div>
+        <div *ngIf="logindata.value.profile_type == 'CAREWORKER'">
+          <strong *ngIf="clientdata; else norecipient">
+            <div *ngIf="jobdetails">
+              <div class="col-md-4">
+                <p>Client</p>
+                <p>Job Title</p>
+                <p>Posted on</p>
+                <p>Location</p>
+              </div>
+              <div class="col-md-8">
+                <p> : {{clientdata.first_name}} {{clientdata.last_name}}</p>
+                <p> : {{jobdata.job_reference}}</p>
+                <p> : {{jobdata.created_on | date}}</p>
+                <p> : {{jobdata.suburb}}</p>
+              </div>
+            </div>
+            <div class="text-right" *ngIf="!agreement_status">
+              <button class="btn btn-primary" (click)="sendDataToAgreement()" data-toggle="modal" data-target="#sendoffer">Send Offer </button>
+            </div>
+            <div class="text-right" *ngIf="agreement_status">
+              <button class="btn btn-primary" (click)="editDataToAgreement()" data-toggle="modal" data-target="#sendoffer">View Sent Offer </button>
+            </div>
+          </strong>
+          <ng-template #norecipient>
+            <strong class="text-warning">
+              <p><i class="fa fa-exclamation-circle"></i>Select user to send an offer</p>
+            </strong>
+          </ng-template>
+        </div>
+
+
+          <div class="med-gray" *ngIf="logindata.value.profile_type == 'CLIENT'">
+            <strong *ngIf="agreement !== undefined; else noagreement">
+              <div class="col-md-6">
+                <p>Agreed Service:</p>
+                <p>Requested on:</p>
+                <p>Working days:</p>
+                <p>Proposed amount:</p>
+              </div>
+              <div class="col-md-6">
+                <p class="ellipsis" title="{{agreement.agreed_services}}"> {{agreement.agreed_services}}</p>
+                <p class="ellipsis"> {{agreement.created_on | date}}</p>
+                <p class="ellipsis" title="{{agreement.working_day}}"> {{agreement.working_day}}</p>
+                <p class="ellipsis" title="{{agreement.proposed_amount}}"> {{agreement.proposed_amount}}</p><br>
+              </div>
+              <div class="row">
+                <div class="col-md-6 text-left">
+                  <button class="btn btn-primary requestbtn" (click)="editDataToAgreement()" data-toggle="modal" data-target="#sendoffer">View Offer</button>
+                </div>
+                <div class="col-md-6 text-right">
+                  <div class="align-left" *ngIf="agreement.status ==='request'">
+                    <button class="btn btn-primary requestbtn" (click)="sendAccept(agreement)">Accept an Offer</button>
+                  </div>
+                  <div class="text-right" *ngIf="agreement.status ==='accept'">
+                    <button class="btn btn-primary requestbtn" disabled >Offer Accepted</button>
+                  </div>
+                </div>
+              </div>
+            </strong>
+            <ng-template #noagreement>
+              <strong class="text-warning">
+                <p><i class="fa fa-exclamation-circle"></i>Select user to request an offer</p>
+              </strong>
+            </ng-template>
+          </div>
+         <!-- <ng-template #elsepart class="text-center">
+            <p class="med-gray">Request an offer and schedule care with *usernmae* after you have agreed your rate and
+              schedule through chat
+            </p>
+          </ng-template>-->
+        </div>
+      </div>
+    </div>
+  </div>
+<app-agreement></app-agreement>
+<app-footer></app-footer>

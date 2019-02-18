@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Careuchoose</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
+
+  <!-- jQuery library -->
+  <script src="assets/js/jquery.3.3.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="assets/css/animate.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/audioplayer/audioplayer.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/base.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/shortcodes.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/theme-color/theme-color-2.css" rel="stylesheet" type="text/css" />
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7kd4UnzjGXiDDv3dQJcKl614LcCMmCoU&libraries=places&language=en"></script>
+
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/jquery.appear.js"></script>
+  <script src="assets/js/modernizr.js"></script>
+  <script src="assets/js/menu/jquery.smartmenus.js"></script>
+  <script src="assets/js/audioplayer/audioplayer.js"></script>
+  <script src="assets/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script defer  src="assets/js/owl-carousel/owl.carousel.min.js"></script>
+  <script src="assets/js/counter/counter.js"></script>
+  <script src="assets/js/countdown/jquery.countdown.min.js"></script>
+  <script src="assets/js/isotope/isotope.pkgd.min.js"></script>
+  <script src="assets/js/mouse-parallax/tweenmax.min.js"></script>
+  <script src="assets/js/mouse-parallax/jquery-parallax.js"></script>
+  <script src="assets/js/contact-form/contact-form.js"></script>
+  <script src="assets/js/contact-form/jquery.validate.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/theme-script.js"></script>
+  <script>
+  var urlToChangeStream = '/api/MyModels/change-stream?_format=event-stream';
+var src = new EventSource(urlToChangeStream);
+src.addEventListener('data', function(msg) {
+  var data = JSON.parse(msg.data);
+  console.log(data); // the change object
+});
+  </script>
+
+</head>
+<body>
+<div id="ht-preloader">
+  <div class="spinner1">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
+<app-root></app-root>
+<script>
+  $(".modal").on("click", function(e){
+    e.preventDefault();
+  });
+</script>
+</body>
+</html>

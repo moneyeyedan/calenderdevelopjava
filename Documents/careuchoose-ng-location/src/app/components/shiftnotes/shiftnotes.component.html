@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="row padding_layer">
+  <div class="col-md-3 col-sm-3 col-xs-12">
+    <app-personal-info></app-personal-info>
+  </div>
+  <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="divheading">
+            <div class="chead">Shift notes</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="text-right">
+            <div class="text-right">
+              <a class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+      <!--<div class="col-md-8 nodata nodataimage" *ngIf="shiftnotes == 0">-->
+      <div class="nodata nodataimage">
+        you have not added any shift notes yet
+      </div>
+    </div>
+  </div>
+</div>

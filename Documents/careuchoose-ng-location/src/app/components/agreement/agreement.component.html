@@ -1,0 +1,169 @@
+<div class="modal fade" id="sendoffer" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading" *ngIf="clientid; else noclient">
+              Agreement with "{{clientid.first_name}} {{clientid.last_name}}"
+            </div>
+            <ng-template #noclient>
+              <div  class="divheading" *ngIf="agreement_info">
+                Agreement with {{agreement_info.user_data.first_name}}{{agreement_info.user_data.last_name}}
+              </div>
+            </ng-template>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+              <i class="fa fa-times" data-dismiss="modal" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div class="col-md-12" *ngIf="agreement_info">
+          Job : {{agreement_info.job_data.job_reference}}
+        </div>
+        <div class="col-md-12" *ngIf="jobid">
+          Job : {{jobid.job_reference}}
+        </div>
+
+        <div class="col-md-12 massages">
+          <div *ngIf="clientid">
+            <span class=""><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+            <p name="amount">You must send an agreement with <b><u>{{clientid.first_name}} {{clientid.last_name}} on {{jobid.job_reference}}</u></b> and wait for them to accept  before you can start
+              providing care. Make sure the rates and agreed service below reflect what you have discussed with them.</p>
+          </div>
+          <div *ngIf="agreement_info">
+            <span class=""><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+            <p name="amount">You must send an agreement with <b><u>{{agreement_info.user_data.first_name}} {{agreement_info.user_data.last_name}}on {{agreement_info.job_data.job_reference}}</u></b> and wait for them to accept  before you can start
+              providing care. Make sure the rates and agreed service below reflect what you have discussed with them.</p>
+          </div>
+        </div>
+        <div class="col-md-12 massages">
+          <div class="">
+            <span class=""><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+            <p>* 10% service fee will be deducted from your rate.</p>
+          </div>
+        </div>
+        <hr>
+        <form #agreementform="ngForm">
+          <h5>Rates</h5>
+          <form #rate="ngForm">
+            <div class="col-md-12">
+              <div class="col-md-4">
+                <div class="form-group has-success has-feedback">
+                  <!--<input type="text" class="form-control" name="rate" [(ngModel)]="workingDay" id="comment1" placeholder="Weekly"/>-->
+                  <select  class="form-control" name="rate" [(ngModel)]="workingDay" id="comment1" required>
+                    <option value="" disabled="true" [selected]="!workingDay">Please choose</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group has-success">
+                  <span class="input-group-addon">$</span>
+                  <input type="text" [(ngModel)]="proposedAmount" class="form-control" name="amount" placeholder="100/-" required>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button class="fa fa-plus pointer" aria-hidden="true" [disabled]="!rate.form.valid"  (click)="add()"></button>
+              </div>
+            </div>
+          </form>
+          <div class="row" *ngIf="days.length">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+            <table class="table">
+              <thead>
+                <th>Days</th>
+                <th>Rates</th>
+                <th>Remove</th>
+              </thead>
+              <tbody >
+              <tr  *ngFor="let day of days; let i = index">
+                <td>{{day}}</td>
+                <td>{{amount[i]}}</td>
+                <td><a><i class="fa fa-trash-o" aria-hidden="true" (click)="remove(i)"></i></a></td>
+              </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+          <div #container></div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <label class="container">Per Hour
+                <input type="radio" checked value="hour" name="radio" [(ngModel)]="workingHoursScheme" (change)="onItemChange($event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <label class="container">Flate Rates
+                <input type="radio" name="radio" value="flateRate" [(ngModel)]="workingHoursScheme" (change)="onItemChange($event)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr>
+          <h5>Agreed Service</h5>
+          <div class="col-md-12">
+            <textarea rows="4" class="form-control" [(ngModel)]="agreedService" name="agreedService" cols="80" required></textarea>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 text-right" *ngIf="(!agreement_info) && (profile_type === 'CAREWORKER')">
+              <button class="btn btn-primary" [disabled]="!agreementform.form.valid" (click)="sendAnOffer()">Send offer</button>
+            </div>
+          </div>
+            <div class="row" *ngIf="agreement_info && profile_type === 'CLIENT'">
+              <div class="col-md-6"></div>
+              <div class="col-md-6 text-right">
+                <button class="btn btn-success btn-style" (click)="sendAccept(agreement_info)">Accept</button>
+                <button class="btn btn-danger btn-style" (click)="sendReject(agreement_info)">Reject</button>
+                <button class="btn btn-info btn-style" (click)="redirect(agreement_info)">Chat</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="list">
+<app-header></app-header>
+<div class="row custom-row">
+  <div class="col-md-3">
+    <app-personal-info></app-personal-info>
+  </div>
+  <div class="col-md-9">
+   <div class="card">
+     <div class="row">
+       <div class="col-md-12 divheading">
+         Agreement List
+         <hr class="border-bottom">
+       </div>
+     </div>
+     <div class="row stack">
+       <div class="col-md-6" *ngFor="let agreement of agreements">
+         <div class="wrap">
+           <div class="col-md-3 text-center">
+             <img class="usercircle" src="assets/images/circleimage.png">
+           </div>
+           <div class="col-md-9">
+             <strong class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">{{agreement.agreed_services}}</strong>
+             <div class="mbr-fonts-style text1 mbr-text display-6">{{userinfo.get(agreement.id).first_name}} {{userinfo.get(agreement.id).first_name}}</div>
+             <div class="mbr-fonts-style text1 mbr-text display-6">{{jobdetails.get(agreement.id).job_reference}}</div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+  </div>
+</div>
+</div>

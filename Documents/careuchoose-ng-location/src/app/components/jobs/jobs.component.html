@@ -1,0 +1,761 @@
+<app-header></app-header>
+
+<ng-container *ngIf="userdata.profile_type == 'CLIENT'">
+  <div class="row custom-row">
+    <div class="col-md-3">
+      <app-personal-info></app-personal-info>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="divheading">
+              <div>Jobs</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-right">
+              <div class="text-right">
+                <a class="btn btn-primary " data-toggle="modal" data-target="#myModal" (click)="reset(jobform)">Post Job</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+
+        <div class="row block job">
+          <div class="col-md-12 nodata nodataimage padd" *ngIf="postedjobdetails.length === 0">
+            No jobs posted yet
+          </div>
+          <div class="row padd" style="display: inherit;">
+            <div class="col-md-6" *ngFor="let jobs of postedjobdetails">
+              <div class="jobs-card">
+                <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6">
+                    <p class="badgestatus">Open</p>
+                  </div>
+                </div>
+                <h4 class="ellipsis"><b>{{jobs.job_reference}}</b></h4>
+                <h6 class="ellipsis"><b>{{jobs.looking_for}}</b></h6>
+                <h5><span>{{jobs.suburb}}</span></h5>
+                <img src="/assets/images/home/images/Holiday-Care.jpg">
+                <div class="row posted-content padd">
+                  <div class="col-md-6">
+                    <p> <b>Posted</b> : {{jobs.created_on| date}}</p>
+                  </div>
+
+                  <div class="col-md-1">|</div>
+                  <div class="col-md-5"><p><b>Gender</b>: {{jobs.gender}}</p></div>
+
+                </div>
+                <p class="posted-contentp ellipsis"><b>Services</b> : {{jobs.services}}</p>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p> <b><i class="fa fa-clock-o" aria-hidden="true"></i>Hours {{jobs.work_hours}} hours</b></p>
+                  </div>
+                  <div class="col-md-3 text-right" (click)="editJobDetails(jobs)">
+                    <button type="button" class="btn btn-default smbt1" data-toggle="modal" data-target="#myModal">
+                      Edit
+                    </button>
+                  </div>
+
+                  <div class="col-md-3" (click)="deleteJob(jobs)">
+                    <button type="button" class="btn btn-danger smbt3">Delete</button>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+
+              </div>
+            </div>
+            <!--<div class="col-md-6">
+              <div class="jobs-card canceled">
+                <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6"></div>
+                </div>
+                <h4 class="ellipsis"><b>American food jhvjshfihh vjhwkfhjk wefihiww kflewhin</b></h4>
+                <h5><span>6 hours ago</span>Virigin NT 08683, Ausrtulia</h5>
+                <img src="assets/images/home/images/Holiday-Care.jpg">
+                <div class="row posted-content padd">
+                  <div class="col-md-6">
+                    <p> <b>Posted</b> : 12/09/2000</p>
+                  </div>
+
+                  <div class="col-md-1">|</div>
+                  <div class="col-md-5"><p><b>Gender</b>: Fefale</p></div>
+
+                </div>
+                <p class="posted-contentp"><b>Services</b> : Meal preperations</p>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p> <b><i class="fa fa-clock-o" aria-hidden="true"></i>Hours 5 to 10 hours</b></p>
+                  </div>
+                  <div class="col-md-6">
+                    <p> <b>Status : </b> <span class="text-danger">Canceled</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="card box3">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="divheading">
+              Ongoing Jobs
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div class="nodata padd" *ngIf="ongoingjobs.length === 0">
+          Currently no job(s) in progress
+        </div>
+        <div class="row stack" *ngFor="let key of ongoingjobs.keys()">
+          <div class="wrap">
+            <div class="col-md-3">
+              <img class="usercircle" src="assets/images/circleimage.png">
+            </div>
+            <div class="col-md-9">
+              <strong class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">{{ongoingjobs.get(key).job_reference}}</strong>
+              <div class="mbr-fonts-style text1 mbr-text display-6">{{ongoingjobs.get(key).user.first_name}} {{ongoingjobs.get(key).user.last_name}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Jobs
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+              <!---->
+              <i class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <form #jobform="ngForm">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 ">
+                <label for="usr">Job reference/ title</label>
+                <input type="text" class="form-control searchh" id="usr" name="jobref" placeholder="Job title"
+                       [(ngModel)]="jobref" maxlength="128" required>
+              </div>
+              <div class="col-md-6"  >
+                <div class="inner-addon right-addon">
+                  <label for="usr">What suburb is the job in?</label>
+                  <i class="glyphicon glyphicon-search"></i>
+                  <input ngx-google-places-autocomplete [options]="{ types: ['(cities)'], componentRestrictions: { country: 'AU' } }" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"  type="text" class="form-control searchh" name="suburb" [(ngModel)]="suburb" placeholder="Enter your suburb or postcode" id="inputId"
+                         maxlength="64" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="sel1">How many hours are you looking for?</label>
+                  <select class="form-control searchh" id="sel1" name="hours" [(ngModel)]="hours" ngModel required>
+                    <option value="" disabled="false" [selected]="!hours">Choose Hours</option>
+                    <option value="Less then 5">Less then 5</option>
+                    <option value="5 to 10">5 to 10</option>
+                    <option value="10 to 20">10 to 20</option>
+                    <option value="more then 20">More then 20</option>
+                    <!--<option [ngValue]="null">Choose Hours</option>-->
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6"  style="padding: 5px 15px">
+                <label>What kind of job is this?</label><br>
+                <div class="form-group">
+                  <div class="btn-group " id="status" data-toggle="buttons">
+                    <label class="btn btn-default btn-on btn-lg active btnspl1" (click)="job_regularity= 'Once off'">
+                      <input type="radio" value="Once off" [(ngModel)]="job_regularity" name="job_regularity">once
+                      off</label>
+                    <label class="btn btn-default btn-off btn-lg btnspl1" (click)="job_regularity= 'Ongoing'">
+                      <input type="radio" value="Ongoing" [(ngModel)]="job_regularity"
+                             name="job_regularity">ongoing</label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 ">
+                <label>When do you require support ?</label><br>
+                <div class="form-group">
+                  <div class="btn-group " id="status" data-toggle="buttons">
+                    <label class="btn btn-default btn-on btn-lg active btnspl1"
+                           (click)="when_required = 'I am flexible'">
+                      <input type="radio" name="when_required" [(ngModel)]="when_required" >I am flexible</label>
+                    <label class="btn btn-default btn-off btn-lg btnspl1" (click)="when_required = 'Particular days'" >
+                      <input type="radio" name="when_required" [(ngModel)]="when_required"  >Particular days</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <div class="radio">
+                  <h5>Gender</h5>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label class="container">Any gender
+                        <input type="radio" id="test" value="any" name="radio-group" (change)="radioevent($event)"
+                               [(ngModel)]="gender"
+                               checked style="padding-right: 2px">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="container">Male
+                        <input type="radio" id="test1" value="male" name="radio-group" [(ngModel)]="gender"
+                               (change)="radioevent($event)">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="container">Female
+                        <input type="radio" id="test2" value="Female" name="radio-group" (change)="radioevent($event)"
+                               [(ngModel)]="gender">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-2"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="when_required == 'Particular days'">
+                <form>
+                  <h5 class=""><i class="fa fa-circle" aria-hidden="true"></i>
+                    Weekdays
+                  </h5>
+                  <div class="row check padd">
+                    <div class="col-md-1">
+                      <label class="container">Mon
+                        <input type="checkbox"
+                               [checked]="monday"
+                               (change)="monday = !monday">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="container">Tue
+                        <input type="checkbox"
+                               [checked]="tuesday"
+                               (change)="tuesday = !tuesday">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="container">Wed
+                        <input type="checkbox" [checked]="wednesday"
+                               (change)="wednesday = !wednesday">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="container">Thu
+                        <input type="checkbox" [checked]="thursday"
+                               (change)="thursday = !thursday">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="container">Fri
+                        <input type="checkbox" [checked]="friday"
+                               (change)="friday = !friday">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="container">Sat
+                        <input type="checkbox" [checked]="saturday"
+                               (change)="saturday = !saturday">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="container">Sun
+                        <input type="checkbox" [checked]="sunday"
+                               (change)="sunday = !sunday">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+            <div class="row check">
+              <div class="col-md-12">
+                <h5><i class="fa fa-circle" aria-hidden="true"></i>Services </h5>
+               <!-- <label class="container">Select All | Filters
+                  <input type="checkbox" (change)="selectAll($event)">
+                  <span class="checkmark"></span>
+                </label>-->
+                <div *ngFor="let service of services">
+                  <a class="trigger info-color text-white">{{service}}<a (click)="ondelete(service)">
+                    <i class="fa fa-close ml-2"></i></a></a>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row check">
+              <div class="col-md-6 col-sm-6">
+                <label class="container">Companionship And social support
+                  <input type="checkbox" [checked]="companion" (change)="onSelected($event)" value="Companionship And social support">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Community participation & Sports Activities
+                  <input type="checkbox" [checked]="community" (change)="onSelected($event)" value="Community participation & sports activities">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Provide Transport
+                  <input type="checkbox" [checked]="provide" (change)="onSelected($event)" value="Provide transport">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Meal Preparation and Shopping
+                  <input type="checkbox" [checked]="meal" (change)="onSelected($event)" value="Meal preparation and shopping">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Light house work
+                  <input type="checkbox" [checked]="house" (change)="onSelected($event)" value="Light house work">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <label class="container">Showering, Toileting and Dressing
+                  <input type="checkbox" [checked]="showering" (change)="onSelected($event)" value="Showering Toileting and Dressing">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Manual transfer and mobility
+                  <input type="checkbox" [checked]="mobility" (change)="onSelected($event)" value="Manual Transfer and mobility">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Assist with medication
+                  <input type="checkbox" [checked]="assist" (change)="onSelected($event)" value="Assist with medication">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Nursing Services
+                  <input type="checkbox" [checked]="nursing" (change)="onSelected($event)" value="Nursing Services">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Allied Health Services
+                  <input type="checkbox" [checked]="health" (change)="onSelected($event)" value="Allied Health Services">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="comment">Describe what you are looking for </label>
+                  <textarea class="form-control splarea" rows="8" id="comment" name="lookingfor"
+                            [(ngModel)]="lookingfor" required placeholder="Describe..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 text-left">
+              <div class="fpara">
+                *Tell us what kind of support you are looking for and we will share it with suitable workers in your
+                area. Available workers will reply to you directly. Remember -the more details you provide, the more
+                likely you are to find a match
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div *ngIf="!update; else elsepart">
+                <button class="btn btn-primary btwidth" type="submit"
+                        [disabled]="!jobform.form.valid"
+                        (click)="postJob(jobform)" data-dismiss="modal">Post Job
+                </button>
+              </div>
+              <ng-template #elsepart>
+                <button class="btn btn-primary btwidth" type="submit"
+                        [disabled]="!jobform.form.valid"
+                        (click)="updateJobDetails(jobform)" data-dismiss="modal">Update Job
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--<hr class="border-bottom">-->
+
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="userdata.profile_type == 'CAREWORKER'">
+  <div class="row custom-row">
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <app-personal-info></app-personal-info>
+    </div>
+    <div class="col-md-6 col-sm-5 col-xs-12">
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              Jobs
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div class="row padd">
+          <div class="col-md-12">
+            <input type="text" class="form-control searchh" [(ngModel)]="title" placeholder="Search...">
+          </div>
+
+        </div>
+        <div class="row padd" style="display: block" *ngIf="careWorkerjobs.length; else nocareworkerjobs">
+          <div class="col-md-6 col-sm-12" *ngFor="let job of careWorkerjobs| filter: title; let i = index">
+            <div class="twPc-div" (click)="viewjob(i,job,job.id)" data-toggle="modal" data-target="#jobview">
+              <a class="twPc-bg twPc-block"></a>
+              <div>
+                <a class="twPc-avatarLink">
+                  <img src="assets/images/img/roundpic.png" class="twPc-avatarImg">
+                </a>
+                <div class="twPc-divUser">
+                  <div class="twPc-divName">
+                    <a class="orange" ngxEllipsis [lines]="1" title={{job.job_reference}}>{{job.job_reference}}</a>
+                  </div>
+                </div>
+                <div  class="job-status" *ngIf="ifApplied(job)">
+                  <span class="fa fa-check-circle"></span>
+                  <p class="table-cell">Applied</p>
+                </div>
+                <div class="twPc-divStats">
+                  <ul class="twPc-Arrange">
+                    <li class="twPc-ArrangeSizeFit">
+                      <a title={{job.suburb}}>
+                        <span class="twPc-StatLabel twPc-block">Address</span>
+                        <span class="twPc-StatValue"> {{job.suburb}}</span>
+                      </a>
+                    </li>
+                    <li class="twPc-ArrangeSizeFit">
+                      <a>
+                        <span class="twPc-StatLabel twPc-block">Days</span>
+                        <span class="twPc-StatValue"><ng-container *ngIf="availability.get(job.id);else elseparts">
+                        <div *ngIf="availability.get(job.id).avail_monday"> Mon,</div>
+                        <div *ngIf="availability.get(job.id).avail_tuesday"> Tue,</div>
+                        <div *ngIf="availability.get(job.id).avail_wednesday"> Wed,</div>
+                        <div *ngIf="availability.get(job.id).avail_thursday"> Thu,</div>
+                        <div *ngIf="availability.get(job.id).avail_friday"> Fri, </div>
+                        <div *ngIf="availability.get(job.id).avail_saturday"> Sat,</div>
+                        <div *ngIf="availability.get(job.id).avail_sunday"> Sun</div>
+                      </ng-container>
+                      <ng-template #elseparts>
+                        All days
+                      </ng-template></span>
+                      </a>
+                    </li>
+                    <li class="twPc-ArrangeSizeFit">
+                      <a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
+                        <span class="twPc-StatLabel twPc-block">Posted on  </span>
+                        <span class="twPc-StatValue">{{job.created_on | date }}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #nocareworkerjobs>
+          <div class="nodata nodataimage">No Job list</div>
+        </ng-template>
+
+      </div>
+    </div>
+
+    <ng-container *ngIf="job_index !== undefined">
+      <div class="modal fade" id="jobview" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header border-bt mod1">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Job Details</h4>
+            </div>
+            <hr class="border-bottom">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-4 ">
+                      <img src="assets/images/circleimage.png" class="responsive-img roundimg">
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                      <div class="headline font">
+                        <div *ngIf="job_id">
+                          {{careworkerjobmap.get(job_id).job_reference}}
+                        </div>
+                      </div>
+                      <div>
+                        <p class="para1">
+                          Posted On  {{careWorkerjobs[job_index].created_on | date}}
+                        </p>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="headfont head1">
+                            Client
+                          </div>
+                          <div class="head1">
+                            {{clientdata.first_name}}  {{clientdata.last_name}}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="headfont">Location</div>
+                          <div>{{careworkerjobmap.get(job_id).suburb}}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-1 col-xs-1 text-right">
+                      <i class="fa fa-star staryellow" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <br>
+                  <hr>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1  col-xs-10 col-xs-offset-1">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <strong>Hours </strong> : {{careworkerjobmap.get(job_id).work_hours}} hours per week
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12" STYLE="display: inline-flex;">
+
+                      <ng-container *ngIf="availability.get(job_id); else elsepart">
+                        <strong>Days : </strong>
+                        <div *ngIf="availability.get(job_id).avail_monday"> Mon,</div>
+                        <div *ngIf="availability.get(job_id).avail_tuesday"> Tue,</div>
+                        <div *ngIf="availability.get(job_id).avail_wednesday"> Wed,</div>
+                        <div *ngIf="availability.get(job_id).avail_thursday"> Thu,</div>
+                        <div *ngIf="availability.get(job_id).avail_friday"> Fri,</div>
+                        <div *ngIf="availability.get(job_id).avail_saturday"> Sat,</div>
+                        <div *ngIf="availability.get(job_id).avail_sunday"> Sun</div>
+                      </ng-container>
+                      <ng-template #elsepart>
+                        <strong>Days : </strong> All days
+                      </ng-template>
+                    </div>
+                    <br>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <strong>Gender </strong> : {{careworkerjobmap.get(job_id).gender}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <strong>Services</strong>
+                      <div class="para-text">
+                        <div class="row">
+                          <div class="col-md-6 padding" *ngFor="let serv of splitted">
+                            {{serv}}
+                          </div>
+                        </div>
+                        <!--{{careworkerjobmap.get(job_id).services}}-->
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="reducemargin">
+                    <div class="tag tagbg"><span>Open</span></div>
+                    <div class="tag tagbg"><span>{{careworkerjobmap.get(job_id).when_exactly}}</span></div>
+                  </div>
+                  <br>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-8"></div>
+                  <div class="col-md-4 text-center" *ngIf="!careworkerjobmap.get(job_id).agreement_status">
+                      <button class="btn btn-primary" (click)="applyToJob(clientdata, careworkerjobmap.get(job_id))">Apply</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-8 text-right" *ngIf="careworkerjobmap.get(job_id).agreement_status">
+                    <div class="row">
+                      <div class="col-md-6 text-right"><button class="btn btn-primary" (click)="sendAgreementData(careworkerjobmap.get(job_id),careworkerjobmap.get(job_id).agreement,clientdata)" data-toggle="modal" data-target="#sendoffer">View Sent Agreement</button></div>
+                      <div class="col-md-6 text-center"><button class="btn btn-primary" disabled >Applied</button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="card box3">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="divheading chead">
+              Filters
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-bottom">
+        <div>
+          Services to filter
+        </div>
+
+        <hr>
+        <div class="row check">
+          <div class="col-md-12">
+            <label class="container">Recommended
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row check">
+          <div class="col-md-12">
+            <label class="container">Archeived
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+
+        <hr>
+        <div class="form-group">
+          <label for="sel1">Sort : </label>
+          <select class="form-control" id="sel1">
+            <option>Choose</option>
+            <option>One</option>
+            <option>Two</option>
+            <option>Three</option>
+          </select>
+        </div>
+        <div>
+          Days
+        </div>
+        <div class="row check">
+          <div class="col-md-12">
+            <label class="container">Any day
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row check">
+          <div class="col-md-4">
+            <label class="container">Mon
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="container">Tue
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="container">Wed
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="container">Thurs
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="container">Fri
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="container">Sat
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="container">Sun
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div>
+          Hours
+        </div>
+        <div class="row check">
+          <div class="col-md-12">
+            <label class="container">Less than 5 hours
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row check">
+          <div class="col-md-12">
+            <label class="container">5 to 10 Hours
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row check">
+          <div class="col-md-12">
+            <label class="container">10 to 20 Hours
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row check">
+          <div class="col-md-12">
+            <label class="container">More than 20 Hours
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div class="spinnerouter" *ngIf="spinner">
+  <div class="spinner"></div>
+</div>
+<app-agreement></app-agreement>
+<app-footer></app-footer>
+

@@ -1,0 +1,209 @@
+.custom-row {
+  padding: 2%;
+  }
+
+  .round {
+  border-radius: 50% !important;
+  }
+  .adminpic {
+  height: 30px;
+  width: 30px;
+  }
+  .adminlogo {
+  margin-top: 10px;
+  }
+  .progress1 {
+  height: 8px !important;
+  /*background-color: #E57373 !important;*/
+  }
+  .progress .prog {
+  background-color: #009FFF !important;
+  }
+  .padd {
+  padding: 3%;
+  }
+  .circular {
+  max-width: 100%;
+  height: 71px !important;
+  margin-top: -37px;
+  position: absolute;
+  border-radius: 40px;
+  margin-left: 20px;
+  margin-bottom: 35px;
+  }
+  .topborder {
+  /*background: linear-gradient(to right, #F0CB35, #C02425);*/
+  border-top: 3px solid #009FFF;
+  }
+  .divheading {
+  font-size: 19px;
+  margin-bottom: 8px;
+  }
+
+  .border-bottom1 {
+  border-bottom: 1px solid #b0bec5;
+  }
+  .navicon {
+  width: 30px !important;
+  height: 30px !important;
+  }
+  .i1 {
+  font-size: 18px !important;
+  background-color: #e75d04;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+  }
+  .fontf {
+  font-size: 10px;
+  }
+  .i2 {
+  background-color: #bf1e2e;
+  font-size: 18px !important;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+  }
+  .i3 {
+  font-size: 18px !important;
+  background-color: #08b58a;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+  }
+  .i4 {
+  font-size: 18px !important;
+  background-color: #8c13ff;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+  }
+  .i5 {
+  font-size: 18px !important;
+  background-color: #2735ba;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+  }
+  .btn-primary {
+  padding: 6px 20px;
+  }
+  .box-2 .row {
+  margin-bottom: 20px;
+  }
+
+  #progress-bar1 {
+  background: linear-gradient(to right, #3edaf3, #2700ff)!important;
+  border-radius: 30px;
+  }
+
+  .fa-pencil-square-o{
+  color: #0055b9;
+  }
+  @media screen and (max-width: 800px) {
+  .card .row {
+  display: inline-flex;
+  }
+  .btn-primary[_ngcontent-c1] {
+  width: 100%;
+  }
+}
+
+.btn-link:hover {
+  background-color: unset !important;
+}
+
+.btn-link {
+  padding: none !important;
+}
+
+.wrap {
+  display: flex;
+  background: white;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.wrap:hover {
+  background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%);
+  color: white;
+}
+
+
+.ico-wrap {
+    margin: auto;
+}
+
+.mbr-iconfont {
+    font-size: 4.5rem !important;
+    color: #313131;
+    margin: 1rem;
+    padding-right: 1rem;
+}
+.vcenter {
+    margin: auto;
+}
+
+.mbr-section-title3 {
+  text-align: left;
+}
+h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.display-5 {
+  font-family: 'Source Sans Pro',sans-serif;
+  font-size: 1.4rem;
+}
+.mbr-bold {
+  font-weight: 700;
+}
+
+p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 25px;
+}
+.display-6 {
+  font-family: 'Source Sans Pro',sans-serif;
+  font-size: 13px
+}
+
+.usercircle {
+  height: 48px;
+  width: 48px;
+  border-radius: 50px;
+  margin-right: 15px;
+}
+
+.stack {
+  margin: auto !important;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a {
+  text-decoration : none;
+}
+
+#recentagreement .table>tbody>tr>td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 30px;
+}
+
+#agreement p, #jobs p, #recentjobs p{
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 90px;
+  line-height: 6px;
+}
+
+#agreement tr, #jobs tr, #recentjobs tr{
+  cursor: pointer;
+}

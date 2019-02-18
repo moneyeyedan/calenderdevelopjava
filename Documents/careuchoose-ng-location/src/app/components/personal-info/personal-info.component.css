@@ -1,0 +1,392 @@
+.circular {
+  max-width: 100%;
+  height: 71px !important;
+  margin-top: -37px;
+  position: absolute;
+  border-radius: 40px;
+  margin-left: 20px;
+  margin-bottom: 35px;
+}
+
+
+.marginb {
+  margin-bottom: 20px !important;
+}
+
+.pend1 {
+  padding-left: 8% !important;
+  margin-bottom: 3%;
+
+}
+
+.padprog {
+  padding: 3%;
+  padding-top: 15%;
+}
+
+.progress1 {
+  height: 8px !important;
+  /*background-color: #E57373 !important;*/
+}
+.progress .prog {
+  background-color: #009FFF !important;
+}
+#progress-bar1 {
+  background: linear-gradient(to right, #68b1fc, #053ec0)!important;
+  border-radius: 30px;
+}
+
+.percent {
+  background: linear-gradient(to right, #68b1fc, #053ec0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 16px;
+}
+
+/*.progress-bar {*/
+  /*margin-top:10% !important;*/
+/*}*/
+
+.card-image img {
+  width: 100%;
+  height: 125px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.username {
+  margin-top: 40px;
+  font-size: 18px;
+  color: white;
+}
+
+.padd1 {
+  margin-left: -3%;
+  color: #272626;
+  font-size: 15px;
+}
+
+/*.prog1 {*/
+  /*height: 10px !important;*/
+  /*margin-top: 11%;*/
+/*}*/
+.padd {
+  padding: 15px 25px;
+}
+.padg {
+  background: #f3f2f2;
+  max-width: 135px;
+  padding: 4px;
+  margin-left: -26px;
+  border: 1px solid #f3f2f2;
+  color: #0055b9;
+  /*font-weight: 600;*/
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user i {
+  border: 1px solid #b5b0b0;
+  font-size: 31px !important;
+  padding: 12px;
+  border-radius: 40px;
+  width: 60px;
+  height: 60px;
+}
+
+.icon-star p i {
+  font-size: 30px !important;
+  color: #fac917;
+  float: left;
+  margin: 6px;
+}
+.fontf {
+  font-size: 10px;
+}
+
+
+.profile {
+  margin: 3%;
+}
+
+.map iframe {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.blue {
+  color: #0055b9;
+}
+.box {
+  border: 1px solid #03A9F4;
+  padding: 7px 14px;
+  color: white;
+  background: #03A9F4;
+  /*box-shadow: 0 0 5px 0px #03A9F4;*/
+}
+.ad .col-md-4 {
+  padding: 0;
+}
+.clr1 {
+  background: #80b9fd;
+}
+.clr2 {
+  background: #3f96ff;
+}
+.clr3 {
+  background: #2482f2;
+}
+h4 span {
+  font-size: 11px;
+  font-weight: normal;
+}
+.box h4 {
+  text-align: right;
+  margin-top: 25px;
+  font-weight: 700;
+}
+
+.box p {
+  font-size: 12px;
+}
+.gray {
+  color: #a3cbe8;
+}
+.date {
+  background: #f3f2f2;
+  padding: 8px;
+  color: #98c1de;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 20px 0;
+  width: 100%;
+}
+.date .col-md-1 {
+  width: 12%;
+}
+.vl {
+  border-left: 1px solid #eee;
+  height: 350px;
+}
+.lines .row {
+  margin-bottom: 10px;
+}
+hr.left, hr.right {
+  margin-bottom: 4px;
+  margin-top: 7px;
+}
+
+.card-content {
+  position: absolute;
+  top: 60px;
+  left: 104px;
+  bottom: 0;
+  text-align: left;
+}
+
+
+.color {
+  color: #ccc;
+}
+
+.underline.blue {
+  border: 2px solid #0f35bd;
+  width: 100%;
+}
+.underline.red {
+  border: 2px solid #b92200;
+  width: 100%;
+}
+.underline.yello {
+  border: 2px solid #FFC107;
+  width: 100%;
+}
+.user h3 {
+  font-weight: 600;
+}
+/*hr{
+border-top: 2px solid #ccc;
+}*/
+#badge {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  background: #1845ab;
+  font-size: 15px;
+}
+.cross:before {
+  top: 2px;
+  content: '';
+  border-left: 2px solid #3edaf3;
+  padding: 4px;
+  position: absolute;
+  height: 20px;
+  margin-left: 39px;
+}
+.col-md-1.blue:after{
+  top: 8px;
+  content: '';
+  border-bottom: 1px solid #9fb3ec;
+  padding: 4px;
+  position: absolute;
+  height: 20px;
+  width: 80%;
+  margin-left: -36px;
+}
+.social img{
+  max-width: 30px;
+}
+.pro_user{
+  padding: 0px 21px;
+}
+
+.radio .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.reducemargin {
+  margin-left: -9px !important;
+}
+
+/* Create a custom radio button */
+.radio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio .container:hover input ~ .checkmark {
+  background-color: #e1dfdf !important;
+  border: 1px solid #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio .container input:checked ~ .checkmark {
+  background-color: #0055b9;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio .container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+.about-us{
+  max-width: 800px;
+  margin: 2% auto;
+}
+.edit-pencile {
+  position: absolute;
+  right: 15px;
+  top: 7px;
+  /* background: #000000; */
+  padding: 14px 12px;
+  border-radius: 30px;
+  height: 45px;
+  width: 45px;
+}
+.edit-pencile:hover {
+  background: linear-gradient(to right, #3edaf3, #2700ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 5px !important;
+
+}
+.fa-pencil{
+  color: white;
+}
+.modal-content ul li{
+  list-style-type: disc;
+}
+.upload .btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.upload .btn {
+  border-color: #0f67d4;
+  background: #0f67d4;
+  color: white;
+}
+
+.upload .btn-large {
+  padding: 0px 4px;
+  font-size: 13.5px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.progress{
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 100px){
+  .circular {
+    max-width: 100% !important;
+    display: none !important;
+  }
+}
+
+.profiletype {
+  font-size: 14px;
+  color: #888;
+  font-weight: 600;
+}
+
+.img-style {
+  width: 100%;
+  min-height: 300px;
+  object-fit: cover;
+}
+
+.pointer {
+  cursor: pointer;
+}

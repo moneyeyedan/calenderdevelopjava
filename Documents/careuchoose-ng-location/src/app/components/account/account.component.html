@@ -1,0 +1,227 @@
+<app-header></app-header>
+<div class="row padding_layer">
+  <div class="col-md-3 col-sm-3 col-xs-12">
+    <app-personal-info></app-personal-info>
+  </div>
+  <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="row ">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="divheading">Account</div>
+          <hr class=border-bottom>
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Account Details</a></li>
+            <li><a data-toggle="tab" href="#menu1">Address</a></li>
+            <li><a data-toggle="tab" href="#menu2">Notification</a></li>
+            <li><a data-toggle="tab" href="#menu3">Emergency Contacts</a></li>
+            <li><a data-toggle="tab" href="#menu4">Email Alerts</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <h5 class="">Account Details (of the person opening the account)</h5>
+              <form #accountdetails=ngForm>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group has-success has-feedback">
+                    <label>First name</label>
+                    <input type="text" class="form-control" name="firstname" [(ngModel)]="firstname">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group has-success has-feedback">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" name="lastname" [(ngModel)]="lastname"/>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label>Date of Birth</label>
+                  <div class="form-group has-success">
+                    <!--<input type="date" >-->
+                    <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" class="form-control" name="date" [(ngModel)]="dob">
+                    <owl-date-time #dt [pickerMode]="'dialog'"></owl-date-time>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <!--<div class="col-md-4">
+                  <div class="form-group">
+                    <label for="sel1">Gender</label>
+                    <select class="form-control">
+                      <option>Male</option>
+                      <option>Female</option>
+
+                    </select>
+                  </div>
+                </div>-->
+                <div class="col-md-4">
+                  <label for="usr">Email</label>
+                  <div class="form-group has-success">
+                    <input type="email" class="form-control" name="date" [(ngModel)]="email">
+
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="usr">Password</label>
+                  <div class="form-group has-success">
+                    <input type="email" class="form-control" name="date" [(ngModel)]="password">
+
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="usr">Confirm Password</label>
+                  <div class="form-group has-success">
+                    <input type="email" class="form-control" name="date" [(ngModel)]="confirmpassword">
+
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                   <label for="usr">Postcode</label>
+                   <div class="form-group has-success">
+                     <input type="number" class="form-control" name="date" [(ngModel)]="postcode">
+
+                   </div>
+                 </div>-->
+
+              </div>
+               <!-- <div class="text-right">
+                  <button class="btn btn-primary outl" (click)="postAccountDetails(accountdetails)">Save
+                  </button>
+                </div>-->
+              </form>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+              <h5>Residential Address</h5>
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="form-group has-success">
+                    <input ngx-google-places-autocomplete [options]="{ types: ['(cities)'], componentRestrictions: { country: 'AU' } }" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" type="text" class="form-control geolocation" name="Address"  [(ngModel)]="address">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="usr">Suburb</label>
+                  <div class="form-group has-success">
+                    <input type="text" class="form-control" name="Suburb" [(ngModel)]="suburb">
+                  </div>
+                  <hr>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="sel1">State</label>
+                    <select class="form-control">
+                      <option *ngFor="let state of State">{{state.label}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <h5>Postal Address</h5>
+              <div class="row check padd">
+                <div class="col-md-10">
+                  <label class="container">Same as residential address
+                    <input type="checkbox" name="type">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group has-success">
+                    <input type="text" class="form-control" name="add">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group has-success">
+                    <input type="text" class="form-control" name="address">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+              <div class="form_account">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="con_num">Contact Phone</label>
+                      <input type="text" class="form-control" id="con_num" value="0491570156">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 check">
+                  <label class="container">Receive SMS when notifications are sent
+                    <input type="checkbox" name="sms_alert" [checked]="sms_alert"
+                           (change)="sms_alert = !sms_alert">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+              <h5>Emergency contacts</h5>
+              <form #emergencycontact=ngForm>
+              <div class="row">
+                <div class="col-md-4"><label >Name</label>
+                  <div class="form-group has-success">
+                    <input type="text" class="form-control" name="emergencyname" [(ngModel)]="emergencyname" >
+                  </div>
+                </div>
+                <div class="col-md-4"><label>Phone</label>
+                  <div class="form-group has-success">
+                    <input type="number" class="form-control" name="emergencyphone" [(ngModel)]="emergencyphone" >
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Relationship</label>
+                    <select class="form-control" name="emergencyrelationship" [(ngModel)]="emergencyrelationship" required>
+                      <option *ngFor="let relation of relationship">{{relation.label}}</option>
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+<!--              <div class="text-right">
+                <button *ngIf="!emergencystate" class="btn btn-primary" type="submit"
+                        [disabled]="!emergencycontact.form.valid"
+                        (click)="postEmergencyContact(emergencycontact)" data-dismiss="modal">Create
+                </button>
+              </div>
+                <button *ngIf="emergencystate" class="btn btn-primary " type="submit"
+                        [disabled]="!emergencycontact.form.valid"
+                        (click)="editEmergencyContact(emergencycontact)" data-dismiss="modal">Update
+                </button>-->
+              </form>
+            </div>
+            <div id="menu4" class="tab-pane fade">
+              <div class="form_account">
+                <div class="well account_well">
+                  <p>Please note, you will receive system notifications
+                    for interactions on the Careuchoose platform, as well as police check expiry notifications.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <div class="text-right" *ngIf="isreligian">
+                <button class="btn btn-primary outl" (click)="editEmergencyContact()">Update
+                </button>
+              </div>
+              <div class="text-right" *ngIf="!isreligian">
+                <button class="btn btn-primary" (click)="postEmergencyContact()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>
+
+
+<app-footer></app-footer>

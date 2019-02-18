@@ -1,0 +1,77 @@
+.padding_layer {
+  padding:2%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form_account {
+  padding:2%;
+}
+
+.btn_account {
+  background-color: #4245FF;
+  color: #fff;
+  border-radius: 30px;
+  padding-right: 5%;
+  padding-left: 5%;
+  font-weight: bold;
+}
+
+.btn_account:hover {
+  background-color: #0000ff;
+  color: #fff;
+}
+
+.check .container {
+  margin-top: 0px !important;
+}
+
+.account_well {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #cc9500;
+}
+
+.nav-tabs { border-bottom: 2px solid #DDD; }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+.nav-tabs > li > a { border: none; color: #666; }
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+.nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
+.tab-content p{
+  max-width: 700px;
+}
+.nav-tabs li{
+  width: 20%;
+  text-align: center;
+}
+.max{
+  max-width: 850px;
+  margin: 0 auto;
+}
+select.form-control {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 42px !important;
+}
+
+select.form-control:focus{
+  border-color: #03A9F4;
+}
+.tab-content span{
+  color: #03A9F4;
+
+}
+.fa-mobile{
+  color: #2700ff;
+  font-size: 25px !important;
+}
+

@@ -1,0 +1,235 @@
+<div class="card pro_user" style="padding:0;">
+  <div class=" cus-card">
+    <div class="card-image text-center">
+      <a data-toggle="modal" data-target="#personal-info" class=""><i id="pencil" class="fa fa-pencil edit-pencile" aria-hidden="true"></i></a>
+      <img src="assets/images/ocean.jpeg" height="70px">
+    </div>
+    <div class="card-content">
+      <div class="username">{{logindata.value.first_name}} {{logindata.value.last_name}}</div>
+      <div class="profiletype">{{logindata.value.profile_type}}</div>
+    </div>
+    <div class="row padrow">
+      <div class="col-md-4 col-sm-4 col-xs-4 text-left">
+        <img src="assets/images/circleimage.png" alt="" class="circle responsive-img circular">
+      </div>
+      <!--<div class="text-danger pend1">Pending Approval</div>-->
+    </div>
+   <div class="padprog">
+     <div class="progress" style="height: 8px;">
+       <div class="progress-bar" id="progress-bar1" role="progressbar" style="width: 70%;" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax ="100" [style.width]="(progress/100)*100 + '%'"></div>
+     </div>
+     <div class="text-center">
+       Profile Strength <span class=" percent"> {{ progress}}%</span>
+     </div>
+   </div>
+    <!--<div class="row progress-bar">-->
+      <!--<div class="col-sm-10 col-sm-offset-1">-->
+        <!--<div class="progress prog1">-->
+          <!--<div class="progress-bar " role="progressbar"-->
+               <!--aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" data-title="42%" style="width:42%">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <hr>
+    <div class="padd">
+      <h4><b>About</b>
+        <a data-toggle="modal" data-target="#personal-info"><i class="fa fa-pencil " style="color: #0a76d4" aria-hidden="true"></i></a>
+      </h4>
+      <p *ngIf="description;else nodiscription">{{description}} </p>
+      <ng-template #nodiscription>
+        Add Discription about you !!
+      </ng-template>
+<!--      <div id="demo" class="collapse"><a data-toggle="collapse" data-target="#demo">More</a>
+        <p>I look forward to the opportunity to work directly with clients and
+          their families in the Inner West through the Careuchoose platform. When I'm not assisting others, I love
+          spending time with my family and chocolate lab, traveling and baking... and I'm a huge fan of the
+          Arts.</p>
+      </div>-->
+    </div>
+    <hr>
+    <div class="row padd text-center user d-flex">
+      <div class="col-md-4">
+        <div>
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <hr class="underline blue">
+          <h3>{{connection}}</h3>
+          <p>Connection</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <i class="fa fa-check" aria-hidden="true"></i>
+          <hr class="underline red">
+          <h3>200</h3>
+          <p>Works Done</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <a routerLink="/chat"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="badge" id="badge">5</span></a>
+          <hr class="underline yello">
+          <h3>20</h3>
+          <p>Messages</p>
+        </div>
+      </div>
+    </div>
+    <div class="padd">
+      <div class="clearfix"></div>
+      <span class="visi">Your Profile Strength Is </span>
+      <div class="padd">
+        <div class="row social d-flex" id="d-flex">
+          <div class="col-md-2">
+            <img src="/assets/images/instragram.png">
+          </div>
+          <div class="col-md-2">
+            <img src="/assets/images/google.png">
+          </div>
+          <div class="col-md-2">
+            <img src="/assets/images/twitter.png">
+          </div>
+          <div class="col-md-2">
+            <img src="/assets/images/facebook.png">
+          </div>
+          <div class="col-md-2">
+            <img src="/assets/images/linked.png">
+          </div>
+          <div class="col-md-2">
+            <img src="/assets/images/pintest.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <hr>
+    <h5 class="">Your profile approval is pending by our registration team. Clients cannot view your
+      profile until it is
+      approved.</h5>
+
+  </div>
+</div>
+<div id="personal-info" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="divheading">
+              About me
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i class="fa fa-times pointer" data-dismiss="modal" aria-hidden="true"></i>
+            </div>
+          </div>
+
+        </div>
+        <hr class="border-bottom">
+        <div class="row about-us">
+          <form #descriptionform="ngForm" action="/users/avatar" id="avatar-dropzone" class="dropzone">
+            <input name="user_id" type="hidden" value="59932">
+            <div class="row upload-image">
+              <div class="alert alert-info">
+                Your profile is the first opportunity to introduce yourself to the community, and a great
+                picture is the first step. We’ve found that workers who have a photo of them smiling are twice
+                as likely to be messaged by clients, so make sure your photo is the best reflection of you.
+              </div>
+
+              <div class="col-md-5">
+                <div class="upload-image-field" id="avatar-preview">
+                  <div class="avatar-box">
+                    <div *ngIf="url === undefined ;else selectedImage">
+                      <img class="img-style" src="https://d3l3isn272api4.cloudfront.net/uploads/avatars/59932/big_backpack-bag-blur-346768.jpg?1541757930">
+                    </div>
+                    <ng-template #selectedImage>
+                      <img [src]="url" alt="uploaded image placeholder"  class="img-style"/>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 text-center">
+                <div class="form-group">
+                  <div class="upload" id="btn-avatar">
+                    <input type="file" name="imageUploading" id="imageUploading"
+                           class="hide" (change)="readUrl($event)"/>
+                    <label for="imageUploading" class="btn btn-large">Select file</label>
+                  </div>
+                  <div class="help-block">
+                    <div class="form-hint"> Maximum Upload size: 10MB</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                <div class="form-group">
+                  <p>Here are some guidelines to follow:</p>
+
+                  <ol>
+                    <li>Smiling:
+                      <small class="text-muted">helps you looks kind, friendly and approachable</small>
+                    </li>
+                    <li>Clear and well lit:
+                      <small class="text-muted">clients need to clearly see your smiling face</small>
+                    </li>
+                    <li>Keep it simple:
+                      <small class="text-muted">the photo should highlight you, and only you</small>
+                    </li>
+                    <li>Headshot only:
+                      <small class="text-muted">Only your face and upper body should be shown</small>
+                    </li>
+                    <li>Nothing obstructing your face:
+                      <small class="text-muted">e.g. sunglasses, a hat or hair</small>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <!-- AI analysis of profile picture -->
+            <br>
+            <div class="row padd">
+              <h5>Describe Yourself</h5>
+              <textarea type="text" class="form-control" name="description" [(ngModel)]="description" maxlength="40"></textarea>
+            </div>
+            <div id="photo-validation" class="alert alert-warning"><p><b>You might want to reconsider your
+              profile photo! Here are a few things to check:</b></p>
+              <p><b><i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i>✗ We’ve noticed your photo might contain other people. Try uploading another with just
+                you!</b></p></div>
+            <div class="dz-default dz-message"><span></span></div>
+          </form>
+          <div class="alert alert-info">
+            This is an opportunity to tell potential clients a little bit about yourself. Make sure you share
+            any unique interests and skills to help clients understand what makes you tick. The following
+            questions might help you get started…
+            <ul style="padding-top: 10px;">
+              <li>Why do you choose to work in community support?</li>
+              <li>What are you passionate about?</li>
+              <li>Tell us about your previous experience and what you’ve enjoyed the most.</li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-9"></div>
+          <div class="col-md-3">
+            <div class="text-center" *ngIf="isreligian">
+              <button class="btn btn-primary outl">Save
+              </button>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary" (click)="saveDescription(descriptionform)">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--model for verification info-->
+
+  </div>
+</div>

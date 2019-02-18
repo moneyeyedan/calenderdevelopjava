@@ -1,0 +1,103 @@
+<app-header></app-header>
+<div class="row custom-row">
+  <div class="col-md-3">
+    <app-personal-info></app-personal-info>
+  </div>
+  <div class="col-md-9">
+    <div  *ngIf="logindata.value.profile_type === 'CAREWORKER'">
+    <div class="card box2">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="divheading">
+            My Clients
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="text-right">
+           <!-- <a data-toggle="modal" data-target="#verification"><i class="fa fa-pencil-square-o blue blue"
+                                                                  aria-hidden="true"></i></a>-->
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+      <div *ngIf="connections.length; else noclient">
+        <div *ngFor="let key of clients.keys();">
+          <a href="" class="client_anchor">
+            <div class="row client_row">
+              <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                <img src="assets/images/client_img3.png" class="client_img">
+              </div>
+              <div class="col-md-8 col-sm-8 col-xs-8">
+                <div class="client_name">
+                  <b>{{clients.get(key).first_name}} {{clients.get(key).last_name}}</b>
+                </div>
+                <div class="client_address">
+                  <div>
+                    <b><i class="fa fa-map-marker client_fa_icon" aria-hidden="true"></i></b> {{clients.get(key).postcode}}
+                  </div>
+                  <div>
+                    <span><i class="fa fa-phone client_fa_icon" aria-hidden="true"></i></span> {{clients.get(key).contact_number}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <hr>
+        </div>
+      </div>
+      <ng-template #noclient>
+        <div class="nodataimage nodata">
+          You have no clients in your network yet
+        </div>
+      </ng-template>
+    </div>
+    </div>
+    <div *ngIf="logindata.value.profile_type === 'CLIENT'">
+      <div class="card box2">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="divheading">
+              My Support Worker
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="text-right">
+              <!-- <a data-toggle="modal" data-target="#verification"><i class="fa fa-pencil-square-o blue blue"
+                                                                     aria-hidden="true"></i></a>-->
+            </div>
+          </div>
+        </div>
+        <hr class="border-bottom">
+        <div *ngIf="connections.length; else nocareworker">
+          <div *ngFor="let key of careworkers.keys()">
+            <a href="" class="client_anchor">
+              <div class="row client_row">
+                <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                  <img src="assets/images/client_img3.png" class="client_img">
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                  <div class="client_name">
+                    <b>{{careworkers.get(key).first_name}} {{careworkers.get(key).last_name}}</b>
+                  </div>
+                  <div class="client_address">
+                    <div>
+                      <b><i class="fa fa-map-marker client_fa_icon" aria-hidden="true"></i></b> {{careworkers.get(key).postcode}}
+                    </div>
+                    <div>
+                      <span><i class="fa fa-phone client_fa_icon" aria-hidden="true"></i></span> {{careworkers.get(key).contact_number}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <hr>
+          </div>
+        </div>
+        <ng-template #nocareworker>
+          <div class="nodata nodataimage">You have no careworkers in your network yet</div>
+        </ng-template>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,202 @@
+<app-header></app-header>
+<div class="row custom-row">
+
+  <div class="col-md-3">
+    <app-personal-info></app-personal-info>
+  </div>
+
+  <div class="col-md-5">
+    <div class="card box2">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="divheading">
+            Quick Action
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="text-right">
+            <a routerLink="/profile"><img src="assets/images/arrow-pointing-to-right.png"></a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+      <div class="" *ngIf="profiletype === 'CAREWORKER';else nocareworker">
+        <div class="row padd" *ngIf="!abn; else elsepart">
+          <div class="col-md-8">
+            <p class=""><i class="fa fa-warning" style="font-size:48px;color:red"></i>Please add your Australian Business Number (ABN)</p>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+              <a class="btn btn-primary" routerLink="/profile">Update</a>
+            </div>
+          </div>
+        </div>
+        <ng-template #elsepart>
+          <p  class="text-center">
+            No Action Found !
+            <!--<img src="/assets/images/img/NO%20DATA.png">-->
+          </p>
+        </ng-template>
+      </div>
+      <ng-template #nocareworker>
+        <div class="nodata text-center">Currently no Action(s) Found</div>
+      </ng-template>
+    </div>
+    <div *ngIf="user_datum">
+    <div class="card box-3" *ngIf="(profiletype === 'CAREWORKER') && recentjob.length">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="divheading">
+            Recommented Jobs
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+      <div  *ngIf="recentjob; else nojob" class="table-responsive">
+        <table class="table" id="jobs">
+          <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Job Regularity</th>
+            <th>Working Hours</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let jobs of recentjob| slice:0:5">
+          <tr>
+            <td><p title="{{jobs.job_reference}}">{{jobs.job_reference}}</p></td>
+            <td><p title="{{jobs.job_regularity}}">{{jobs.job_regularity}}</p></td>
+            <td><p title="{{jobs.work_hours}} hours">{{jobs.work_hours}}   hours</p></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="col-md-4 text-right float-right">
+          <a class="btn btn-primary" routerLink="/jobs">View All</a>
+        </div>
+      </div>
+      <ng-template #nojob>
+        <p class="nodata">You have not received any jobs posted from clients yet.</p>
+      </ng-template>
+    </div>
+    <div class="card box-3" *ngIf="profiletype === 'CLIENT' && recentjob.length">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="divheading">
+            Recent Jobs
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+        <div  *ngIf="recentjob.length; else nojob" class="table-responsive">
+          <table class="table" id="recentjobs">
+            <thead>
+            <tr>
+              <th>Job Title</th>
+              <th>Job Regularity</th>
+              <th>Working Hours</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let jobs of recentjob| slice:0:5">
+            <tr>
+              <td><p title="{{jobs.job_reference}}">{{jobs.job_reference}}</p></td>
+              <td><p title="{{jobs.job_regularity}}">{{jobs.job_regularity}}</p></td>
+              <td><p title="{{jobs.work_hours}} hours">{{jobs.work_hours}}   hours</p></td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="col-md-4 text-right float-right">
+            <a class="btn btn-primary" routerLink="/jobs">View All</a>
+          </div>
+        </div>
+        <ng-template #nojob>
+          <p class="nodata">You have not posted any jobs yet.</p>
+        </ng-template>
+    </div>
+  </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card box3">
+      <div class="row">
+        <div class="col">
+          <div class="divheading">
+            Recent Messages
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+      <a routerLink="/chat">
+        <div class="row stack">
+          <div class="wrap">
+            <div class="col-md-3">
+              <img class="usercircle" src="assets/images/circleimage.png">
+            </div>
+            <div class="col-md-9">
+              <strong class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Yashwanth</strong>
+              <div class="mbr-fonts-style text1 mbr-text display-6">Am good at cooking, can ...</div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <!---<p class="nodata"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> No recent messages.</p> --->
+    </div>
+    <div class="card box3 box-3">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="divheading">
+            Agreements
+          </div>
+        </div>
+      </div>
+      <hr class="border-bottom">
+      <p *ngIf="!agreementlist.length" class="nodata">You do not have pending or current agreements with any clients. Send an agreement after           discussing rates and
+            services. You can start working after the client accepts.
+         </p>
+      <div *ngIf="agreementlist.length" class="table-responsive">
+      <table class="table table-borderless" id="agreement">
+           <thead>
+              <tr *ngIf="user_datum !== undefined">
+              <th scope="col" *ngIf="user_datum.profile_type =='CLIENT'">Service provider</th>
+              <th scope="col" *ngIf="user_datum.profile_type =='CAREWORKER'">Client</th>
+              <th scope="col">Service</th>
+                <th scope="col">Sent on</th>
+              </tr>
+             </thead>
+           <tbody>
+             <tr *ngFor="let agreement of agreementlist | slice:0:5" (click)="redirect(agreement)"  data-toggle="modal" data-target="#sendoffer" >
+               <td *ngIf="clientinfo.get(agreement.id)"><p>{{clientinfo.get(agreement.id).first_name}} {{clientinfo.get(agreement.id).last_name}}</p> </td>
+               <td title={{agreement.agreed_services}}><p>{{agreement.agreed_services}}</p></td>
+               <td><p>{{agreement.created_on | date}}</p></td>
+             </tr>
+           </tbody>
+         </table>
+        <div><a (click)="agreement(true)">View all</a></div>
+      </div>
+    </div>
+    <div *ngIf="user_datum">
+    <div class="card" *ngIf="user_datum.profile_type === 'CAREWORKER'">
+      <div class="divheading">References</div>
+      <hr class="border-bottom">
+      <div class="table-responsive padd">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Delivery</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>yash n</td>
+            <td>19/11/18</td>
+            <td>Reference unobtainable</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<app-agreement></app-agreement>
+<app-footer></app-footer>

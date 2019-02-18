@@ -1,0 +1,1122 @@
+.usercircle {
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+  /*margin-left: -15px !important;*/
+}
+
+.padimg {
+  padding-left: 6% !important;
+}
+
+.headfont {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stylish-input-group[_ngcontent-c7] .input-group-addon[_ngcontent-c7] {
+  background: white !important;
+  margin-bottom: 10px;
+  border: 1px solid #0055b9 !important;
+  border-left: none !important;
+}
+
+.btnlink1 {
+  background: #0a76d4;
+  color: #fff;
+  padding-right: 2%;
+  padding-left: 2%;
+  height: 50px;
+  padding-top: 0.2%;
+  padding-bottom: 0.5%;
+  border-radius: 2px;
+}
+
+.retro {
+  font-size: 130px !important;
+  color: #C0030F;
+}
+
+.red {
+  background: #FA535E;
+}
+
+.green {
+  background-color: #08b58a;
+  /*margin: 2px;*/
+  border-radius: 50px;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: #fff;
+  text-decoration: none;
+  padding-top: 1%;
+  padding-bottom: 1%;
+
+}
+
+.yellow {
+  background-color: #F0CB35;
+  /*margin: 2px;*/
+  border-radius: 50px;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: #fff;
+  text-decoration: none;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.red1 {
+  background-color: #C02425;
+  /*margin: 2px;*/
+  border-radius: 50px;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: #fff;
+  text-decoration: none;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.btntop1 {
+  background-color: #82a1c7;
+  color: #292020;
+  border: none;
+  border-radius: 50px;
+  padding-right: 20%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  padding-left: 20%;
+  margin-top: 10px;
+}
+
+.btntop2 {
+  background-color: #fff;
+  color: #0f67d4;
+  border: 1px solid #0f67d4;
+  border-radius: 50px;
+  padding-right: 20%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  padding-left: 20%;
+  margin-top: 10px;
+}
+
+.staryellow {
+  font-size: 36px !important;
+  color: #ffe613;
+}
+
+.btnlink2 {
+  background: #5a5a5a;
+  color: #fff;
+  margin: 8px;
+  padding-right: 2%;
+  padding-left: 2%;
+  height: 50px;
+  padding-top: 0.2%;
+  padding-bottom: 0.5%;
+  border-radius: 2px;
+}
+
+.fbtn {
+  background: #0055B9;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.stylish-input-group[_ngcontent-c5] .input-group-addon[_ngcontent-c5] {
+  background: white !important;
+  margin-bottom: 10px;
+  border: 1px solid #0000FF !important;
+  border-left: none !important;
+}
+
+.border-bt {
+  border-bottom: transparent !important;
+}
+
+.chead {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.para-text {
+  font-size: 12px;
+}
+
+.roundimg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.headline {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.mar {
+  margin-bottom: 6px;
+}
+
+.spacing {
+  padding-left: 10%;
+}
+
+.custom-row {
+  padding: 2%;
+}
+
+.btn-primary {
+  border-color: #eeee;
+/ fallback for old browsers / background: -webkit-linear-gradient(to right, #F0CB35, #C02425);
+/ Chrome 10 - 25, Safari 5.1 - 6 / background: linear-gradient(to right, #F0CB35, #C02425);
+/ W3C, IE 10 + / Edge, Firefox 16 +, Chrome 26 +, Opera 12 +, Safari 7 + / color: #fff;
+}
+
+
+.round {
+  border-radius: 50% !important;
+}
+
+.adminpic {
+  height: 30px;
+  width: 30px;
+}
+
+.adminlogo {
+  margin-top: 10px;
+}
+
+.progress1 {
+  height: 8px !important;
+  /*background-color: #E57373 !important;*/
+}
+
+.progress .prog {
+  background-color: #009FFF !important;
+}
+
+.padd {
+  padding: 2%;
+}
+
+.circular {
+  max-width: 100%;
+  height: 71px !important;
+  margin-top: -37px;
+  position: absolute;
+  border-radius: 40px;
+  margin-left: 20px;
+  margin-bottom: 35px;
+}
+
+.topborder {
+  /*background: linear-gradient(to right, #F0CB35, #C02425);*/
+  border-top: 3px solid #C02425;
+}
+
+.divheading {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.box-3 {
+  /*background-color: blue;*/
+  background: #0575E6;
+/ fallback for old browsers / background: -webkit-linear-gradient(to right, #021B79, #0575E6);
+/ Chrome 10 - 25, Safari 5.1 - 6 / background: linear-gradient(to left, #021B79, #0575E6);
+/ W3C, IE 10 + / Edge, Firefox 16 +, Chrome 26 +, Opera 12 +, Safari 7 + / color: #fff;
+}
+
+.border-bottom1 {
+  border-bottom: 1px solid #b0bec5;
+}
+
+.navicon {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.i1 {
+  font-size: 18px !important;
+  background-color: #e75d04;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+}
+
+.fontf {
+  font-size: 10px;
+}
+
+.i2 {
+
+  background-color: #bf1e2e;
+  font-size: 18px !important;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+}
+
+.btwidth {
+  width: 100% !important;
+}
+
+.btnspl1:hover {
+  background-color: #0055b9 !important;
+  color: #fff !important;
+}
+
+.i3 {
+  font-size: 18px !important;
+  background-color: #08b58a;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+}
+
+.i4 {
+  font-size: 18px !important;
+  background-color: #8c13ff;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+}
+
+.i5 {
+  font-size: 18px !important;
+  background-color: #2735ba;
+  padding: 15px;
+  border-radius: 40pc;
+  color: white;
+}
+
+.box-2 .row {
+  margin-bottom: 20px;
+}
+
+#progress-bar1 {
+  background: linear-gradient(to right, #3edaf3, #2700ff) !important;
+  border-radius: 30px;
+}
+
+.btn-primary.danger {
+  background: #ff0000;
+  border-color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.fa-pencil-square-o {
+  color: #00b0ff;
+}
+
+@media screen and (max-width: 800px) {
+  .card .row {
+    display: inline-flex;
+  }
+
+  .btn-primary {
+    width: 100% !important;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.carebox {
+  height: auto;
+  background: #fff;
+  box-shadow: 0px 0px 5px 1px #dcdbdb;
+  border-radius: 13px;
+  padding-bottom: 17px;
+  margin-bottom: 25px;
+}
+
+.imgbox {
+  max-height: 120px;
+  width: 100%;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+.check .container {
+  padding-left: 24px !important;
+}
+
+.check .checkmark {
+  background-color: #e9e5e5  !important;
+  border: 1px solid #ccc;
+}
+
+.check .container input:checked ~ .checkmark {
+  background-color: #5151a7  !important;
+}
+
+.imagecare {
+  border-top: 5px;
+}
+
+.orange {
+  color: orange;
+}
+
+.open {
+  background: #05e7af;
+  text-decoration: none;
+  border-radius: 50px;
+  /* padding-left: 10%;
+  padding-right: 10%; */
+  color: #fff;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.block {
+  display: block !important;
+}
+
+.toggle-label {
+  position: relative;
+  display: block;
+  width: 215px;
+  height: 50px;
+  margin-top: 8px;
+  border: 1px solid #0000FF;
+  -margin: 200px auto;
+}
+
+.toggle-label input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.toggle-label input[type=checkbox] + .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0000FF;
+  transition: background 150ms linear;
+}
+
+.toggle-label input[type=checkbox]:checked + .back {
+  background: #0000FF; /*green*/
+}
+
+.toggle-label input[type=checkbox] + .back .toggle {
+  display: block;
+  position: absolute;
+  content: ' ';
+  background: #fff;
+  width: 50%;
+  height: 100%;
+  transition: margin 150ms linear;
+  border: 1px solid #0000FF;
+  border-radius: 0;
+}
+
+.toggle-label input[type=checkbox]:checked + .back .toggle {
+  margin-left: 110px;
+}
+
+.toggle-label .label {
+  display: block;
+  position: absolute;
+  width: 50%;
+  color: #ddd;
+  line-height: 40px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.toggle-label .label.on {
+  left: 0px;
+}
+
+.toggle-label .label.off {
+  right: 0px;
+}
+
+.toggle-label input[type=checkbox]:checked + .back .label.on {
+  color: #fff;
+}
+
+.toggle-label input[type=checkbox] + .back .label.off {
+  color: #fff;
+}
+
+.toggle-label input[type=checkbox]:checked + .back .label.off {
+  color: #ddd;
+}
+
+.stylish-input-group[_ngcontent-c1] .input-group-addon[_ngcontent-c1] {
+  border: 1px solid #465197 !important;
+  border-left: none !important;
+}
+
+.searchh {
+  height: 42px !important;
+
+}
+
+.btn-default.btn-on.active {
+  background-color: #465197;
+  color: #fff;
+}
+
+.btn-default.btn-off.active {
+  background-color: #465197;
+  color: #fff;
+}
+
+
+.smbt1 :focus {
+  background-color: #5cb85c !important;
+  color: #fff !important;
+}
+
+.smbt2 :focus {
+  background-color: #d58512 !important;
+  color: #fff !important;
+
+}
+
+.smbt3 :focus {
+  background-color: #d9534f !important;
+  color: #fff !important;
+
+}
+
+.fpara {
+  font-size: 11px;
+}
+
+.flink {
+  text-decoration: none;
+}
+
+
+.modal-content {
+  padding: 3% !important;
+}
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .glyphicon {
+  position: absolute;
+  /*padding: 34px;*/
+  pointer-events: none;
+  padding-top: 11%;
+
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.rado {
+  position: absolute;
+  /*top: 0;*/
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .rado {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .rado {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.rado:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .rado:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .rado:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.radiob {
+  display: flex;
+}
+
+.right-addon .glyphicon {
+  right: 0px;
+}
+
+.right-addon input {
+  padding-right: 30px;
+}
+
+
+.stylish-input-group .input-group-addon {
+  background: white !important;
+  margin-bottom: 10px;
+
+}
+
+.stylish-input-group .form-control {
+  border-right: 0;
+  box-shadow: 0 0 0;
+  border-color: #ccc;
+  border-right: none !important;
+
+}
+
+.stylish-input-group button {
+  border: 0;
+  background: transparent;
+}
+
+
+.rad {
+  display: inline-block !important;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 200px) {
+
+  .usercircle {
+    /*margin-left: -20px !important;*/
+  }
+
+}
+
+.job {
+  font-size: 12px;
+  padding: 5px 0px;
+}
+
+.carebox .row {
+  padding: 4px 5px;
+}
+
+.job .btn {
+  font-size: 11px;
+}
+
+.img {
+  margin-top: 0;
+  height: 60px !important;
+}
+
+.blue {
+  color: #00b0ff;
+}
+
+.inline {
+  display: inline-flex;
+  white-space: nowrap;
+  width: 149px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.onecheck {
+  padding-top: 15px;
+  margin: 8px;
+  margin-top: 15px;
+}
+
+#imaginary_container {
+  max-width: 600px;
+  margin-left: 2% !important;
+
+}
+
+.head1 {
+  margin-left: 9px !important;
+}
+
+.para1 {
+  padding: 0px !important;
+}
+
+form {
+  max-width: 100%;
+  margin: 1% auto;
+}
+
+.btn-lg {
+  font-size: 14px;
+}
+
+.radio .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.reducemargin {
+  margin-left: -9px !important;
+}
+
+/* Create a custom radio button */
+.radio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio .container input:checked ~ .checkmark {
+  background-color: #0055b9;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio .container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+
+.twPc-div {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #e1e8ed;
+  border-radius: 6px;
+  height: 200px;
+  max-width: 340px;
+  box-shadow: 0 0 3px 2px #eeee;
+}
+
+.twPc-bg {
+  background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
+  background-position: 0 50%;
+  background-size: 100% auto;
+  border-bottom: 1px solid #e1e8ed;
+  border-radius: 4px 4px 0 0;
+  height: 85px;
+  width: 100%;
+}
+
+.twPc-block {
+  display: block !important;
+}
+
+.twPc-button {
+  margin: -35px -10px 0;
+  text-align: right;
+  width: 100%;
+}
+
+.twPc-avatarLink {
+
+  background-color: #fff;
+  border-radius: 6px;
+  display: inline-block !important;
+  float: left;
+  margin: -30px 5px 0 8px;
+  max-width: 100%;
+  padding: 1px;
+  vertical-align: bottom;
+}
+
+.twPc-avatarImg {
+  object-fit: cover;
+  border: 2px solid #fff;
+  border-radius: 7px;
+  box-sizing: border-box;
+  color: #fff;
+  height: 72px;
+  width: 72px;
+}
+
+.twPc-divUser {
+  margin: 5px 0 0;
+}
+
+.twPc-divName {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.twPc-divName a {
+  color: inherit !important;
+}
+
+.twPc-divStats {
+  margin-left: 11px;
+  padding: 30px 0;
+}
+
+.twPc-Arrange {
+  box-sizing: border-box;
+  display: table;
+  margin: 0;
+  min-width: 100%;
+  padding: 0;
+  table-layout: auto;
+}
+
+ul.twPc-Arrange {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+
+.twPc-ArrangeSizeFit {
+  display: table-cell;
+  padding: 0;
+  vertical-align: top;
+}
+
+.twPc-ArrangeSizeFit a:hover {
+  text-decoration: none;
+}
+
+.twPc-StatValue {
+  display: inline-flex;
+  white-space: nowrap;
+  width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.15s ease-in-out 0s;
+}
+
+.twPc-StatLabel {
+  font-weight: 800;
+  color: #1d1e1f;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-transform: uppercase;
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out 0s;
+}
+
+
+
+.card--1 .card__img{
+  background-image: url("../../../assets/images/img/carehands.jpg");
+  margin: 0;
+}
+
+.card__like {
+  width: 18px;
+}
+
+.card__clock {
+  width: 15px;
+  vertical-align: middle;
+  fill: #AD7D52;
+}
+
+.card__time {
+  font-size: 12px;
+  color: #AD7D52;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+
+
+.card__img {
+  /*visibility: hidden;*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 128px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+}
+
+
+
+#job-card .card {
+  padding: 0;
+  /* margin-right: 25px; */
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  /*width: 33.3%;*/
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+#job-card .card:hover {
+  border: 1px solid #ccc;
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  /*transform: scale(1.25, 1.25);*/
+}
+
+.card__info {
+  z-index: 2;
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 15px;
+}
+
+.card__category {
+  font-family: 'Raleway', sans-serif;
+  /*text-transform: uppercase;*/
+  font-size: 13px;
+  /*letter-spacing: 2px;*/
+  font-weight: 500;
+  color: #868686;
+
+}
+
+#job-card .card__title {
+  margin-top: 1px !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#job-card .card__by {
+  font-size: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+#job-card .card__author {
+  font-weight: 600;
+  text-decoration: none;
+  color: #a4a7b7;
+}
+
+#job-card .card:hover .card__img--hover {
+  height: 100%;
+  opacity: 0.2;
+}
+
+#job-card .card:hover .card__info {
+  background-color: transparent;
+  position: relative;
+}
+
+#job-card .card:hover .card__info-hover {
+  opacity: 1;
+}
+.jobs-card{
+  border: 1px solid #eee;
+  padding: 20px;
+  box-shadow: 0 0 13px 4px #eeee;
+  border-top: 3px solid #64ed39;
+  min-height: 380px;
+  max-height: 430px;
+  margin-bottom: 3%;
+}
+.jobs-card img{
+  width: 100%;
+}
+.jobs-card span{
+  color: #aba4a4;
+  font-weight: normal;
+}
+.jobs-card p{
+  font-size: 12px;
+}
+span.text-success{
+  color: #64ed39 !important;
+  font-weight: 600 !important;
+}
+.jobs-card hr{
+  border-top: 1px solid #0a1861;
+}
+.posted-content b{
+  margin-right: 20px;
+}
+.posted-contentp b{
+  margin-right: 12px;
+}
+.fa-clock-o{
+  color: #333;
+  font-size: 19px !important;
+}
+span.text-danger{
+  color: #ed1c1c !important;
+  font-weight: 600 !important;
+}
+.jobs-card.canceled{
+  border-top: 3px solid #ed1c1c;
+}
+.ellipsis{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 250px;
+
+}
+
+.wrap {
+  display: flex;
+  background: white;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.wrap:hover {
+  background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%);
+  color: white;
+}
+
+
+.ico-wrap {
+  margin: auto;
+}
+.usercircle {
+  height: 48px;
+  width: 48px;
+  border-radius: 50px;
+  margin-right: 15px;
+}
+
+.stack {
+  margin: auto !important;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.tag {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #b5adcc;
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  padding: 5px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin: 0 30px 0 0;
+  text-decoration: none;
+}
+
+.tag:before {
+  background: #fff;
+  width: 10px;
+  height: 10px;
+  content: "";
+  display: inline-block;
+  border-radius: 20px;
+  margin: 0 5px 0 0;
+}
+
+.tag:after {
+  display: inline-block;
+  border: 15px solid;
+  border-color: transparent transparent transparent #b5adcc;
+  height: 0;
+  width: 0;
+  position: absolute;
+  right: -30px;
+  top: 0;
+  content: "";
+  display: inline-block;
+}
+
+.tag:hover:after {
+  border-color: transparent transparent transparent #b5adcc;
+}
+
+.job-status {
+  padding: 0px 10px;
+  float: right;
+  display: table;
+}
+
+.jobcard {
+  margin-bottom: 10px;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.fa-check-circle {
+  margin : 0 5px !important;
+}
+
+.badgestatus {
+  background: #4CAF50;
+  position: absolute;
+  right: 7px;
+  padding: 2px 14px;
+  color: white;
+  font-size: 10px !important;
+  border-radius: 30px;
+}

@@ -1,0 +1,798 @@
+<div class="page-wrapper">
+
+  <header id="site-header" class="header">
+    <div id="header-wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Navbar -->
+            <nav class="navbar ">
+              <a class="navbar-brand logo">
+                <img id="logo-img" class="img-center" src="assets/images/Careulogo.svg" alt="">
+              </a>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarNavDropdown"
+                      aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <ul class="nav navbar-nav ml-auto mr-auto">
+                  <li class="nav-item active dropdown"><a class="nav-link dropdown-toggle">Home</a>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Pages</a>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Services</a>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Project</a>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">News</a>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Contact</a>
+                  </li>
+                </ul>
+                <div class="navbar-right align-items-center d-flex justify-content-end list-inline right">
+                  <a class="btn btn-theme1" routerLink="/login">Login</a>
+                  <a class="btn btn-theme" routerLink="/signup"
+                  ><span>Sign up</span></a>
+                </div>
+              </div>
+
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="home-bg ">
+    <img src="../../../assets/images/home/images/01.png" class="position">
+    <section class="fullscreen-banner banner banner-2 p-0 o-hidden bg-contain bg-pos-r animatedBackground "
+             data-bg-img="assets/images/home/images/bg/cloud_2Bg" style="min-height: 670px;">
+      <div class="" data-bg-img="assets/images/home/images/pattern/01.png"></div>
+      <div class="h-100 bg-contain bg-pos-rb sm-bg-cover">
+        <div class="align-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <div class="white-bg box-shadow px-5 py-5 sm-px-3 sm-py-3 xs-px-2 xs-py-2 bg-contain bg-pos-l "
+                    >
+                  <div class="row align-items-center cloud-bg ">
+                    <div class="col-lg-6 col-md-12 text-center">
+                      <div class="round-animation">
+                        <img class="img-center topBottom" src="../../../assets/images/home/images/img-1.png" alt="">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 md-mt-5 maxwidth">
+                      <h2 class="mb-4">The comfort of choosing your
+                          own support team.</h2>
+                      <div class="d-flex align-items-center"><a class="btn btn-theme" routerLink="/signup" (click)="newMessage('CAREWORKER')"
+                      ><span>Become a support worker</span></a>
+                        <a class="btn btn-theme1" routerLink="/signup" (click)="newMessage('CLIENT')"
+                        ><span>I am looking for support</span></a>
+                      </div>
+                      <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                          <input type="text" class="  search-query form-control" placeholder="Search"  [(ngModel)]="jobs"/><br>                          
+                          <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                        </div>
+                      </div>
+                 
+
+                      <div class = "row" *ngIf="jobs">
+                          <div class = "col-lg-12  md-mt-5 maxwidth">
+                                <div class="col-md-4" *ngFor="let job of careWorkerjobs| filter: jobs">
+                                  <div class="twPc-div">
+                                    <a class="twPc-bg twPc-block"></a>
+                                    <div>
+                                      <a class="twPc-avatarLink">
+                                        <img src="assets/images/img/roundpic.png" class="twPc-avatarImg">
+                                      </a>
+                                      <div class="twPc-divUser">
+                                        <div class="twPc-divName">
+                                          <a class="orange" ngxEllipsis [lines]="1" title={{job.job_reference}}>{{job.job_reference}}</a>
+                                        </div>
+                                      </div>
+                                      <div class="twPc-divStats">
+                                        <ul class="twPc-Arrange">
+                                          <li class="twPc-ArrangeSizeFit">
+                                            <a title={{job.suburb}}>
+                                              <span class="twPc-StatLabel twPc-block">Address</span>
+                                              <span class="twPc-StatValue"> {{job.suburb}}</span>
+                                            </a>
+                                          </li>
+                                          <li class="twPc-ArrangeSizeFit">
+                                            <a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
+                                              <span class="twPc-StatLabel twPc-block">Posted on  </span>
+                                              <span class="twPc-StatValue">{{job.created_on | date }}</span>
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                          </div>    
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="page-content">
+    <section class="text-center o-hidden" data-bg-img="assets/images/home/pattern/01.png">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-10 ml-auto mr-auto">
+            <div class="section-title">
+
+              <h2 class="title">Getting started is as easy as 3 step</h2>
+              <!--<hr class="border-bottom">-->
+              <p class="lead wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">Start working with an company that
+                provide everything you need to generate awareness, drive traffic, connect with customers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-12 wow fadeIn">
+            <div class="work-process">
+              <div class="work-process-inner">
+
+                <div class="work-img">
+
+                  <img class="img-center" src="assets/images/home/images/how-it-work/01.png" alt="">
+                  <span class="step-num">01</span>
+                </div>
+
+                <h4>Research Project</h4>
+                <p class="mb-0">Leverage agile frameworks to provide a<br> robust synopsis for high level</p>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 md-mt-5 wow fadeIn">
+            <div class="work-process">
+              <div class="work-process-inner">
+                <div class="work-img">
+                  <img class="img-center" src="assets/images/home/images/how-it-work/02.png" alt="">
+                  <span class="step-num">02</span>
+                </div>
+                <h4>Targeting</h4>
+                <p class="mb-0">Leverage agile frameworks to provide <br>a robust synopsis for high level</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 md-mt-5 wow fadeIn">
+            <div class="work-process">
+              <div class="work-process-inner">
+                <div class="work-img">
+                  <img class="img-center" src="assets/images/home/images/how-it-work/03.png" alt="">
+                  <span class="step-num">03</span>
+                </div>
+                <h4>Result</h4>
+                <p class="mb-0">Leverage agile frameworks to provide a<br> robust synopsis for high level</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="dot1" src="../../../assets/images/home/images/07.png" alt=""
+        >
+      </div>
+
+    </section>
+    <img class="dot" src="../../../assets/images/home/images/07.png" alt=""
+    >
+    <div class="community">
+
+      <div class="container">
+
+        <div class="row align-items-center">
+          <div class="col-md-6 col-md-12 order-lg-12 wow fadeInLeft">
+            <div class="mouse-parallax">
+              <div class="">
+                <img class="img-center topBottom" src="../../../assets/images/home/images/imege1.png" alt=""
+                     style="max-width: 450px">
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-6 col-md-12  md-mt-5">
+            <div class="insideText">PEOPLE TO CONNECT</div>
+            <h2 class="title mb-4 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="2s">It’s an easy and safe
+              online platform for people to connect with care and support in their local community.</h2>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container water-section">
+      <div class="align-items-center max-width">
+
+        <div class="wow fadeInRight">
+          <div class="mouse-parallax">
+            <div class="">
+              <div class="water-section-content">
+                <h1>Government funded?
+                  We’ve got you covered.</h1>
+                <p>Use Careuchoose to start building your support network, even if you are NDIS funded or have a Home Care
+                  Package.Use Careuchoose to start building your support
+                  network , even if you are NDIS funded or have a Home Care Package.</p>
+                <div class="d-flex align-items-center"><a class="btn btn-theme" routerLink="/login"
+                ><span>Yes, I’m NDIS Funded</span></a>
+                  <a class="btn btn-theme1" routerLink="/login"
+                  ><span>Yes, I have a Home Care Package</span></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <section class="price">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-12 ml-auto mr-auto">
+            <div class="section-title">
+              <h2 class="title">Choose Your Pricing plan</h2>
+            </div>
+          </div>
+        </div>
+        <div class="card price-table">
+          <div class="row">
+            <div class="col-md-6 text-right">
+              <h4>if job agreed on</h4>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="amount" class="form-control" id="calculate"  [(ngModel)]="budget" (ngModelChange)="calculatebadget()"><span>then</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 text-right">
+              <h4>Service seeker has to pay</h4>
+            </div>
+            <div class="col-md-6">
+              <h5><i class="fa fa-usd" aria-hidden="true"></i> {{clienttotal}}</h5><span>and</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 text-right">
+              <h4>Service provider will get</h4>
+            </div>
+            <div class="col-md-6">
+              <h5><i class="fa fa-usd" aria-hidden="true"></i> {{cwtotal}}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 text-right">
+              <h4>Totle careuchoose fees</h4>
+            </div>
+            <div class="col-md-6">
+              <h5><i class="fa fa-usd" aria-hidden="true"></i>{{total}} </h5><span>/ per</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="fullscreen-banner banner p-0 o-hidden access" data-bg-img="assets/images/home/images/pattern/01.png"
+             style="min-height: 450px;">
+      <!--<div class="insideText">Loptus</div>-->
+      <div class="">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 col-md-12  md-mt-5 maxwidth">
+              <h2 class="title mb-4 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="2s">Access a simple and
+                safe
+                network of care and support</h2>
+              <!--<hr class="border-bottom">-->
+              <p>Enjoy greater peace of mind for you and your family, with Careuchoose’s network of verified independent care
+                and support workers.</p>
+              <div class="d-flex align-items-center"><a  routerLink="/login" class="btn btn-theme"
+              ><span>Find support worker</span></a>
+                <a class="btn btn-theme1" routerLink="/login"
+                ><span>Register Today</span></a>
+              </div>
+            </div>
+            <div class="col-md-6 col-md-12 order-lg-12 wow fadeInRight">
+              <div class="mouse-parallax">
+                <div class="round-animation">
+                  <img class="img-center topBottom" src="../../../assets/images/home/images/image3.png" alt=""
+                       style="margin-left: 30px">
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grey-bg pos-r text-center">
+      <div class="pattern-3">
+        <img class="img-fluid rotateme" src="assets/images/home/images/pattern/03.png" alt="">
+      </div>
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-5 col-md-6 wow fadeInLeft">
+            <div class="featured-item text-center">
+              <div class="featured-icon">
+                <img class="img-center" src="assets/images/home/images/feuture/04.png" alt="">
+              </div>
+              <div class="featured-title">
+                <h5>Strict Approval Process</h5>
+              </div>
+              <div class="featured-desc">
+                <p>Careuchoose support workers meet strict criteria, including reference and key qualification checks.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 sm-mt-5">
+
+          </div>
+          <div class="col-lg-5 col-md-6 md-mt-3 wow fadeInRight">
+            <div class="featured-item text-center">
+              <div class="featured-icon">
+                <img class="img-center" src="assets/images/home/images/feuture/06.png" alt="">
+              </div>
+              <div class="featured-title">
+                <h5>Insurance Coverage</h5>
+              </div>
+              <div class="featured-desc">
+                <p>Support workers provide police checks and when relevant Working With Children Checks for added safety
+                  and security.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-3">
+
+          </div>
+          <div class="col-lg-4 col-md-6 mt-3 wow fadeInUp">
+            <div class="featured-item text-center">
+              <div class="featured-icon">
+                <img class="img-center" src="assets/images/home/images/feuture/08.png" alt="">
+              </div>
+              <div class="featured-title">
+                <h5>High Safety Priority</h5>
+              </div>
+              <div class="featured-desc">
+                <p>Design must be functional, and futionality must translated into, and futionality must translated
+                  into.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-3">
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="pt-0">
+      <div class="row">
+        <div class="col-lg-6 col-md-10 ml-auto mr-auto ">
+          <div class="section-title text-center wow fadeInDown">
+
+            <h2 class="title">Design your support
+              to suit you</h2>
+            <!--<hr class="border-bottom">-->
+            <p>Finding the right kind of care and support is easy with Careuchoose.
+              Search based on what matters most to you and your family.</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="bg-img">
+        <div class="">
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <div class="text-center wow fadeIn">
+                <div class="clients-logo1 col-md-3">
+                  <!--<img src="../../../assets/images/home/LR.png">-->
+                  <h1 class="">Social Support</h1>
+
+                </div>
+                <div class="clients-logo1 col-md-3">
+                  <h1>Domestic
+                    Assistance</h1>
+                </div>
+                <div class="clients-logo1 col-md-3">
+                  <h1>Therapy
+                    Support</h1>
+                </div>
+
+                <div class="clients-logo1 col-md-3">
+                  <h1>Work &
+                    Study</h1>
+                </div>
+                <div class="clients-logo1 col-md-3">
+                  <h1>Personal
+                    Care</h1>
+                </div>
+                <div class="clients-logo1 col-md-3">
+                  <h1>Independent
+                    Living</h1>
+                </div>
+                <div class="clients-logo1 col-md-3">
+                  <h1>Social
+                    Support</h1>
+                </div>
+                <div class="clients-logo1 col-md-3">
+                  <h1>Travel</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-12  text-center margin"><a class="btn btn-theme" routerLink="/login"
+      ><span>Find a Support worker</span></a>
+      </div>
+    </section>
+    <section>
+      <div class="patten-star">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-10 ml-auto mr-auto ">
+              <div class="section-title text-center">
+
+                <h2 class="title">A simple, transparent system
+                  that works for everyone.</h2>
+                <p>Finding the right kind of care and support is easy with Careuchoose.
+                  Search based on what matters most to you and your family.</p>
+                <div class="col-md-12  text-center margin"><a class="btn btn-theme" routerLink="/login"
+                ><span>View our pricing</span></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="price">
+            <img src="../../../assets/images/home/images/Layer%20147.png">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="agent">
+      <div class="patten-star">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-lg-8 col-md-12 ml-auto mr-auto">
+              <div class="section-title">
+
+                <h2 class="title">Something for everyone.</h2>
+                <!--<hr class="border-bottom">-->
+                <p class="mb-0 text-black">Finding the right kind of care and support is easy with Careuchoose.
+                  Search based on what matters most to you and your family.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-12">
+              <div class="post">
+                <div class="post-image">
+                  <img class="img-fluid h-100 w-100" src="assets/images/home/images/blog/1.png" alt="">
+                </div>
+                <h4 class="blue-bg">Aged Care</h4>
+                <div class="post-desc">
+
+                  <p>TackCare brings you more choice, more flexibility and more value with transparent pricing to help
+                    you
+                    find the support that suits you best.
+                  </p>
+                  <div class="post-title">
+                    <h5><a>Learn more</a></h5>
+                    <!--<hr class="border-bottom">-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12 md-mt-5">
+              <div class="post">
+                <div class="post-image">
+                  <img class="img-fluid h-100 w-100" src="assets/images/home/images/blog/2.png" alt="">
+                </div>
+                <h4 class="blue-bg">Disability Support</h4>
+                <div class="post-desc">
+
+                  <p>With an emphasis on transparency and value, Careuchoose gives you an easier, safer, and more flexible
+                    online platform to find disability support workers for you and your family.
+                  </p>
+                  <div class="post-title">
+                    <h5><a>Learn more</a></h5>
+                    <!--<hr class="border-bottom">-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12 md-mt-5">
+              <div class="post">
+                <div class="post-image">
+                  <img class="img-fluid h-100 w-100" src="assets/images/home/images/blog/3.png" alt="">
+                </div>
+                <h4 class="blue-bg">Care and Support Workers</h4>
+                <div class="post-desc">
+
+                  <p>When you’re looking for flexible, rewarding support work in your community, Careuchoose makes it easy for
+                    you to connect with clients you really click with.
+                  </p>
+                  <div class="post-title">
+                    <h5><a>Learn more</a></h5>
+                    <!--<hr class="border-bottom">-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-0">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6 col-md-10 ml-auto mr-auto ">
+            <div class="section-title text-center">
+
+              <h2 class="title">As Featured In</h2>
+              <!--<hr class="border-bottom">-->
+
+            </div>
+          </div>
+          <div class="col-md-12 client">
+            <div class="ht-clients d-flex flex-wrap align-items-center text-center">
+              <div class="clients-logo">
+                <img class="img-center" src="assets/images/home/images/client/07.png" alt="">
+              </div>
+              <div class="clients-logo">
+                <img class="img-center" src="assets/images/home/images/client/08.png" alt="">
+              </div>
+              <div class="clients-logo">
+                <img class="img-center" src="assets/images/home/images/client/09.png" alt="">
+              </div>
+
+              <div class="clients-logo">
+                <img class="img-center" src="assets/images/home/images/client/10.png" alt="">
+              </div>
+              <div class="clients-logo">
+                <img class="img-center" src="assets/images/home/images/client/11.png" alt="">
+              </div>
+              <div class="clients-logo">
+                <img class="img-center" src="assets/images/home/images/client/12.png" alt="">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section class="bg-contain bg-pos-r pt-0 team" data-bg-img="assets/images/home/images/bg/02.png">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-8 col-md-12 ml-auto mr-auto">
+          <div class="section-title">
+
+            <h2 class="title">You Can See Our The support
+              you deserve What You Say?</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="owl-carousel owl-theme" data-items="1" data-autoplay="true">
+            <div class="item">
+              <div class="testimonial style-2">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="testimonial-img info-img round-animation">
+                      <img class="img-center leftRight" src="assets/images/home/images/testimonial/01.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-12 ml-auto md-mt-5">
+                    <div class="testimonial-content">
+                      <div class="testimonial-quote"><i class="fa fa-quote-left" aria-hidden="true"></i>
+                      </div>
+                      <p>Professional recommended and great experience, Nam pulvinar vitae neque et porttitor, Praesent sed nisi eleifend, Consectetur adipisicing elit, sed do eiusmodas temporo incididunt</p>
+                      <div class="testimonial-caption">
+                        <h5>Lana Roadse</h5>
+                        <label>CEO of Loptus</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial style-2">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="testimonial-img info-img round-animation">
+                      <img class="img-center leftRight" src="assets/images/home/images/testimonial/01.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-12 ml-auto md-mt-5">
+                    <div class="testimonial-content">
+                      <div class="testimonial-quote"><i class="fa fa-quote-left" aria-hidden="true"></i>
+                      </div>
+                      <p>Professional recommended and great experience, Nam pulvinar vitae neque et porttitor, Praesent sed nisi eleifend, Consectetur adipisicing elit, sed do eiusmodas temporo incididunt</p>
+                      <div class="testimonial-caption">
+                        <h5>Lana Roadse</h5>
+                        <label>CEO of Loptus</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial style-2">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="testimonial-img info-img round-animation">
+                      <img class="img-center leftRight" src="assets/images/home/images/testimonial/01.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-12 ml-auto md-mt-5">
+                    <div class="testimonial-content">
+                      <div class="testimonial-quote"><i class="fa fa-quote-left" aria-hidden="true"></i>
+                      </div>
+                      <p>Professional recommended and great experience, Nam pulvinar vitae neque et porttitor, Praesent sed nisi eleifend, Consectetur adipisicing elit, sed do eiusmodas temporo incididunt</p>
+                      <div class="testimonial-caption">
+                        <h5>Lana Roadse</h5>
+                        <label>CEO of Loptus</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer white-bg pos-r o-hidden bg-contain" data-bg-img="assets/images/home/pattern/01.png">
+    <div class="round-p-animation"></div>
+    <div class="primary-footer">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="ht-theme-info bg-contain bg-pos-r h-100 dark-bg text-white"
+                 data-bg-img="assets/images/home/bg/02.png">
+              <div class="footer-logo">
+                <img src="../../../assets/images/careUchoos-logo.svg" class="img-center" alt="">
+              </div>
+              <p class="mb-3">Loptus Digital Marketing HTML5 Template Is fully responsible, Performance oriented theme,
+                Build whatever you like with the Loptus, Loptus is the creative, modern HTML5 Template suitable for Your
+                business.</p> <a class="btn-simple"><span>Read More <i
+              class="fas fa-long-arrow-alt-right"></i></span></a>
+              <div class="social-icons social-border circle social-hover mt-5">
+                <h4 class="title">Follow Us</h4>
+                <ul class="list-inline">
+                  <li class="social-facebook"><a><i class="fa fa-facebook-f"></i></a>
+                  </li>
+                  <li class="social-twitter"><a><i class="fa fa-twitter"></i></a>
+                  </li>
+                  <li class="social-gplus"><a><i class="fa fa-google"></i></a>
+                  </li>
+                  <li class="social-linkedin"><a><i class="fa fa-linkedin"></i></a>
+                  </li>
+                  <li class="social-skype"><a><i class="fa fa-skype"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 py-8 md-px-5">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 footer-list padding">
+                <h4 class="title">Usefull links</h4>
+                <div class="row">
+                  <div class="col-sm-5" style="padding-left: 30px;">
+                    <ul class="list-unstyled">
+                      <li><a href="about-us.html">About Us</a>
+                      </li>
+                      <li><a href="service.html">Our Service</a>
+                      </li>
+                      <li><a href="case-studies-grid-3.html">Case Studies</a>
+                      </li>
+                      <li><a href="project-grid-3.html">Project</a>
+                      </li>
+                      <li><a href="faq.html">Faq</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-7" >
+                    <ul class="list-unstyled">
+                      <li><a>Our Team</a>
+                      </li>
+                      <li><a>Blog</a>
+                      </li>
+                      <li><a>Privacy Policy</a>
+                      </li>
+                      <li><a>Terms & Condition</a>
+                      </li>
+                      <li><a>Contact Us</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 sm-mt-5">
+                <h4 class="title">Contact us</h4>
+                <ul class="media-icon list-unstyled">
+                  <li>
+                    <p class="mb-0">423B, Road Wordwide Country, USA</p>
+                  </li>
+                  <li><a href="mailto:htinfotech7@gmail.com">htinfotech7@gmail.com</a>
+                  </li>
+                  <li><a href="tel:+912345678900">+91-234-567-8900</a>
+                  </li>
+                  <li><a href="tel:+912345678900">+91-234-567-8900</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-lg-10 col-md-12 mr-auto">
+                <div class="align-items-center white-bg box-shadow px-3 py-3 radius d-md-flex justify-content-between">
+                  <div class="row">
+                    <div class="col-md-4 text-center"><h4 class="mb-0" style="padding-top: 8px">NewsLetter</h4></div>
+                    <div class="col-md-8 text-center">
+                      <div class="subscribe-form sm-mt-2">
+                        <form id="mc-form" class="group">
+                          <input type="email" value="" name="EMAIL" class="email" id="mc-email"
+                                 placeholder="Email Address"
+                                 required="">
+                          <input class="btn btn-theme" type="submit" name="subscribe" value="Subscribe">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="secondary-footer">
+      <div class="container">
+        <div class="copyright">
+          <div class="row align-items-center">
+            <div class="col-md-6"><span>Copyright 2018 | All Rights Reserved</span>
+            </div>
+            <div class="col-md-6 text-md-right sm-mt-2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<div class="scroll-top"><a class="smoothscroll" href="index.html#top"><i class="fa fa-arrow-up"></i></a></div>
+

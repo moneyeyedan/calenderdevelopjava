@@ -1,0 +1,438 @@
+/* .navbar-inverse {
+  background: #fff !important;
+  box-shadow: 0 4px 8px 0 rgba(206,206,206,.5);
+  border: #fff !important;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+  background: #fff !important;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+  color: #0000FF !important;
+} */
+.radio .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.reducemargin {
+  margin-left: -9px !important;
+}
+
+/* Create a custom radio button */
+.radio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio .container input:checked ~ .checkmark {
+  background-color: #0055b9;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio .container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.bg-img {
+  background-image: url("/assets/images/bg001.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hbt {
+  height: 42px !important;
+}
+
+.bgbt {
+  background-color: #0055b9 !important;
+}
+
+.lbcol {
+color: #504f4f !important;
+  font-size: 14px !important;
+}
+
+.borin {
+  border:1px solid #989090 !important;
+}
+
+.btn.focus, .btn:focus, .btn:hover {
+  color:#fff !important;
+}
+
+.outl {
+  outline :none !important;
+}
+
+.white {
+  color: #fff;
+}
+
+.cus-radio1 {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 1.5%;
+}
+
+.looking {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 2% !important;
+  padding: 2%;
+  color: #333;
+}
+
+.grey {
+  color: rgb(241, 227, 227);
+}
+
+  .padtop{
+  padding-top:5%;
+  margin-bottom: 5%;
+  }
+
+.para01 {
+  font-size: 17px;
+  margin-bottom: 10%;
+}
+
+.errormsg {
+  font-size: 11px !important;
+  margin-top: -3%;
+
+}
+
+.radiosecond {
+  padding-bottom: 3% !important;
+}
+
+  .labelradio{
+  font-size: 20px;
+    color: #333;
+  }
+  .heading{
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1;
+  }
+  .pink{
+  color: aqua;
+  font-size: 15px;
+  font-weight: 700;
+  }
+  .box{
+  background: #fff;
+  height: auto;
+  border-radius: 8px;
+  border-top: 5px solid #4d4def;
+  padding: 5%;
+  margin-top:5%;
+    margin-right: 3%;
+  }
+  .form-heading{
+  color:#4F8BCF;
+  font-size: 20px;
+  font-weight: 500;
+  }
+
+  hr{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  }
+  .inputWithIcon input[type="text"] {
+  padding-left: 40px;
+  }
+  .inputWithIcon {
+  position: relative;
+  }
+  .inputWithIcon i {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  padding: 9px 8px;
+  color: #aaa;
+  transition: 0.3s;
+  }
+  .inputWithIcon input[type="text"]:focus + i {
+  color: dodgerBlue;
+  }
+  .inputWithIcon.inputIconBg i {
+  background-color: #aaa;
+  color: #fff;
+  padding: 9px 4px;
+  border-radius: 4px 0 0 4px;
+  }
+  .inputWithIcon.inputIconBg input[type="text"]:focus + i {
+  color: #fff;
+  background-color: dodgerBlue;
+  }
+  .btn-default.btn-on.active {
+    background-color: #3f86ed;
+    color: #fff;
+  }
+  .btn-default.btn-off.active {
+    background-color: #3f86ed;
+    color: #fff;
+
+  }
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  height:42px !important;
+}
+
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+  height: 42px !important;
+}
+
+  .newinp {
+    height:42px !important;
+  }
+.blue{
+  color: #3f86ed !important;
+  text-decoration: none !important;
+  font-weight: bold;
+}
+.logo-img{
+  margin: 2% 9%;
+}
+.radio .container input:checked ~ .checkmark {
+  background-color: #0055b9;
+}
+ /* .btn{
+  background: #0000FF !important;
+  color: #fff !important;
+  padding-left: 30% !important;
+  padding-right: 30% !important;
+  border-radius: 50px !important;
+  margin-top:4% !important;
+  }
+  .btn:hover{
+  background: #fff !important;
+  color:#222 !important;
+  border:1px solid #0000FF;
+  transition: all ease-in .3s;
+  }*/
+
+  .but{
+  background: #3f86ed !important;
+  border-radius: 5px !important;
+  border: 1px solid #3f86ed !important;
+  padding-left: 14% !important;
+  padding-right: 14% !important;
+  color: #fff !important;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  }
+  /*.but:hover{*/
+  /*background: #fff !important;*/
+  /*color: #0000FF !important;*/
+  /*transition: .3s;*/
+  /*}*/
+  .but1{
+    background: #fff !important;
+    border-radius: 5px !important;
+    border: 1px solid #3f86ed !important;
+    padding-left: 14% !important;
+    padding-right: 14% !important;
+    color: #000 !important;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  /*.but1:hover{
+    background: #0000FF !important;
+    color: #fff !important;
+    transition: .3s;
+  }*/
+  .forgot{
+  color: #3f86ed;
+  }
+  .forgot:hover{
+  color: #3f86ed;
+  text-decoration: none !important;
+  }
+  .red{
+  color:red !important;
+  text-decoration: none !important;
+  }
+
+  @media only screen and (max-width: 768px) and (min-width: 100px) {
+  .bg-img{
+  height:auto !important;
+  }
+  .heading{
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+  }
+  .pink{
+  color: aqua;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  }
+  }
+  ul li {
+  display: inline;
+  }
+  .extra{
+  padding-left: 3%;
+  }
+  .padd{
+  padding-right: 3%;
+  }
+
+.goodbg {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 0 30px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+  .hr007{
+    margin-bottom: 10px !important;
+  }
+
+.heightcl {
+  height: 82px !important;
+}
+
+  .bgc:hover{
+    background: #3f86ed !important;
+    color: #fff !important;
+  }
+
+  .padd:hover{
+  text-decoration: none !important;
+  }
+  .paral{
+  font-weight: 700;
+    padding-left: 3%;
+  }
+  .ldiv{
+  bottom: 0 !important;
+  }
+
+  .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{
+  margin-left: -25px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  }
+  .checkfont{
+  }
+  .form-control:focus{
+  box-shadow: none !important;
+  border : 1px solid #3f86ed;
+  }
+.ldiv{
+  margin-left: 2%;
+}
+ .btn[disabled], fieldset[disabled] .btn {
+   cursor: not-allowed;
+   filter: alpha(opacity=65);
+   -webkit-box-shadow: none;
+   box-shadow: none;
+   opacity: .65;
+ }
+
+button#caret {
+  border : none;
+  background : none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.input-wrap {
+  position: relative;
+  display: inline;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.spinner h1{
+  text-align: center;
+  margin: 20% auto auto;
+}
+
+.newpad {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+.box {
+  margin-bottom: 4%;
+}
+}
+
+.input-caret {
+  height: 42px;
+  border-radius: 5px;
+  border: 1px solid #3f86ed;
+  margin-top: 4%;
+  width: 100%;
+}
+
+.loginclss {
+  color: #3f86ed;
+}
+
+.valigntext {
+  height:53.3px;
+}
+
+.valigntext1 {
+  line-height: 53.3px;
+}

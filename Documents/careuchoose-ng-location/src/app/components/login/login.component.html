@@ -1,0 +1,144 @@
+<div class="mydiv1">
+  <div class="bg-img">
+    <div class="container-fluid">
+      <div class="col-md-1 col-sm-1">
+
+      </div>
+      <div class="col-md-5 col-sm-5">
+        <a routerLink="/home"><img src="../../../assets/images/Logo.png" class="logo-img" height="60" width="217"/></a>
+        <h2 class="white padtop start">
+          Get started today...
+        </h2>
+        <div class="white heading">
+          The comfort of choosing Your own Support team.
+        </div>
+        <div class="pink">
+          <i class="fa fa-heart heart1"></i>
+          <!--<i class="fas fa-hand-holding-heart"></i>-->
+          Online platform for people to connect with care and support in their local communities.
+        </div>
+      </div>
+
+
+      <div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+        <div class="box">
+          <div class="form-heading text-center">
+            Login to manage your account
+          </div>
+          <br>
+          <form #loginform="ngForm" (ngSubmit)="login(loginform)">
+            <div>
+              <div class="form-group inputWithIcon heightcl">
+                <label for="email" class="lbcol">Email address</label>
+                <input type="email"
+                       name="email"
+                       id="email"
+                       class="form-control inp2"
+                       [(ngModel)]="email"
+                       placeholder="Email"
+                       #Email="ngModel"
+                       ngModel
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"
+                       required autofocus>
+                <app-error [control]="Email"></app-error>
+                <!--<i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>-->
+              </div>
+              <div class="form-group heightcl">
+                <label for="pwd" class="lbcol">Password</label>
+                <input type="password"
+                       class="form-control inp2"
+                       id="pwd"
+                       name="password"
+                       placeholder="Password"
+                       [(ngModel)]="password"
+                       #pass="ngModel"
+                       ngModel required>
+                <app-error [control]="pass"></app-error>
+              </div>
+            </div>
+            <div class="row check">
+              <div class="col-md-6 col-sm-6  col-xs-12">
+                <label class="container light extracl">Keep me logged in
+                  <input type="checkbox" name="type" [checked]="keepme"
+                         (change)="keepme = !keepme">
+                  <span class="checkmark borin"></span>
+                </label>
+              </div>
+              <div class="col-md-6  text-right">
+                <button class="btn btn-primary" [disabled]="loginform.form.invalid">Login</button>
+              </div>
+            </div>
+          </form>
+          <div class="forgot">
+            <a href="" class="forgot" data-target="#pwdModal" data-toggle="modal">Forgot Password?</a>
+          </div>
+          <hr>
+          <div class="text-center">
+            Don't have a CareUchoose account? <span><a routerLink="/signup" class="blue">Sign up </a></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="ldiv">
+            <ul class="ulfix">
+              <li><a href="" class="white padd">FAQ's<span class="extra white">|</span></a></li>
+              <li><a href="" class="white padd">POLICY<span class="extra white">|</span></a></li>
+              <li><a href="" class="white padd">TERMS OF USE</a></li>
+            </ul>
+
+            <p class="white paral">&copy; 2019 CareUchoose. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="spinnerouter" *ngIf="spinner">
+    <!--<div class="spinner"></div>-->
+    <div class="spinner"></div>
+  </div>
+
+</div>
+<div class="modal fade" id="pwdModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+          <div class="col-md-8">
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+
+              <i
+                class="fa fa-times" data-dismiss="modal" aria-hidden="true" style="cursor: pointer"></i>
+            </div>
+          </div>
+
+        </div>
+        <div class="forgotpassword">
+
+          <div class="text-center">
+            <img src="../../../assets/images/email.png" class="mail">
+            <h3>Forgot your password?</h3>
+          </div>
+          <p class="text-center">That's okay, it happens! Click on the button below to reset your password.</p>
+          <div class="form-group inputWithIcon heightcl">
+            <input type="email"
+                   name="email"
+                   class="form-control inp2"
+                   placeholder="Email"
+                   #Email="ngModel"
+                   ngModel
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"
+                   required autofocus>
+            <app-error [control]="Email"></app-error>
+            <!--<i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>-->
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Reset your password</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
